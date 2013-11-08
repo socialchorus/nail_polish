@@ -1,4 +1,4 @@
-describe("Scoof.Model", function() {
+describe("NailPolish.Model", function() {
   describe("", function() {
     
   });

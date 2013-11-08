@@ -1,8 +1,8 @@
-describe("Scoof.View", function () {
+describe("NailPolish.View", function () {
   var view, ViewClass;
 
   beforeEach(function () {
-    ViewClass = Scoof.View.extend({
+    ViewClass = NailPolish.View.extend({
       className: 'view-class',
       templateName: 'view_class'
     });
@@ -15,7 +15,7 @@ describe("Scoof.View", function () {
   });
 
   it('is a Backbone.View', function () {
-    var ViewClass = Scoof.View.extend();
+    var ViewClass = NailPolish.View.extend();
     view = new ViewClass();
     expect(view instanceof Backbone.View).toBe(true);
   });
@@ -91,12 +91,12 @@ describe("Scoof.View", function () {
       beforeEach(function () {
         view.attachmentMethod = 'html';
         $parent = $('<div class="goo"><div class="huh"></div></div>')
-        spyOn(Scoof.View.ParentFinder.prototype, 'perform').and.returnValue($parent);
+        spyOn(NailPolish.View.ParentFinder.prototype, 'perform').and.returnValue($parent);
       });
 
       it('performs the parent finder', function () {
         view.render();
-        expect(Scoof.View.ParentFinder.prototype.perform).toHaveBeenCalled()
+        expect(NailPolish.View.ParentFinder.prototype.perform).toHaveBeenCalled()
       });
 
       it('attaches (using the method) current DOM to the parent', function () {
@@ -108,7 +108,7 @@ describe("Scoof.View", function () {
 
     describe("rendering subviews", function () {
       beforeEach(function () {
-        var SubView = Scoof.View.extend({
+        var SubView = NailPolish.View.extend({
           render: jasmine.createSpy('render')
         });
 
@@ -150,7 +150,7 @@ describe("Scoof.View", function () {
       spyOn(MyPresenter.prototype, 'initialize');
       spyOn(MyPresenter.prototype, 'toJSON').and.returnValue('myJSON');
 
-      ViewClass = Scoof.View.extend({
+      ViewClass = NailPolish.View.extend({
         presenterClass: function () {
           return MyPresenter;
         }
@@ -181,7 +181,7 @@ describe("Scoof.View", function () {
     var ViewClass;
 
     beforeEach(function () {
-      ViewClass = Scoof.View.extend({
+      ViewClass = NailPolish.View.extend({
         addListeners: {
           'click': 'onClick',
           'change input': 'onChange'
@@ -196,8 +196,8 @@ describe("Scoof.View", function () {
 
     describe("when the device is touch base and not windows 8", function () {
       beforeEach(function () {
-        spyOn(Scoof.Events, 'isTouch').and.returnValue(true);
-        spyOn(Scoof.Events, 'isWindowsTouch').and.returnValue(false);
+        spyOn(NailPolish.Events, 'isTouch').and.returnValue(true);
+        spyOn(NailPolish.Events, 'isWindowsTouch').and.returnValue(false);
         view = new ViewClass();
       });
 
@@ -213,7 +213,7 @@ describe("Scoof.View", function () {
 
     describe('when the device is not touch', function () {
       beforeEach(function () {
-        spyOn(Scoof.Events, 'isTouch').and.returnValue(false);
+        spyOn(NailPolish.Events, 'isTouch').and.returnValue(false);
         view = new ViewClass();
       });
 
@@ -228,8 +228,8 @@ describe("Scoof.View", function () {
 
     describe("when the device is windows 8 and touch", function () {
       beforeEach(function () {
-        spyOn(Scoof.Events, 'isTouch').and.returnValue(true);
-        spyOn(Scoof.Events, 'isWindowsTouch').and.returnValue(true);
+        spyOn(NailPolish.Events, 'isTouch').and.returnValue(true);
+        spyOn(NailPolish.Events, 'isWindowsTouch').and.returnValue(true);
         view = new ViewClass();
       });
 

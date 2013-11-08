@@ -1,8 +1,8 @@
-describe("Scoof.Router", function() {
+describe("NailPolish.Router", function() {
   var $parent;
 
   it("is a Backbone.Router", function() {
-    expect(new Scoof.Router() instanceof Backbone.Router).toBe(true);
+    expect(new NailPolish.Router() instanceof Backbone.Router).toBe(true);
   });
 
   beforeEach(function() {
@@ -13,7 +13,7 @@ describe("Scoof.Router", function() {
     var router;
 
     beforeEach(function() {
-      router = new Scoof.Router($parent);
+      router = new NailPolish.Router($parent);
     });
 
     it("clears the #content div of existing content", function() {
@@ -22,7 +22,7 @@ describe("Scoof.Router", function() {
     });
 
     it("renders view passed in", function() {
-      var view = new Scoof.View({parent: $parent});
+      var view = new NailPolish.View({parent: $parent});
       view.el = $("<div class='new-view'></div>")[0];
 
       router.page([view]);
@@ -34,11 +34,11 @@ describe("Scoof.Router", function() {
     var router;
 
     beforeEach(function() {
-      router = new Scoof.Router($parent);
+      router = new NailPolish.Router($parent);
     });
 
     it("renders view passed in", function() {
-      var view = new Scoof.View({parent: $parent});
+      var view = new NailPolish.View({parent: $parent});
       view.el = $("<div class='new-view'></div>")[0];
 
       router.page([view]);
@@ -46,7 +46,7 @@ describe("Scoof.Router", function() {
     });
 
     it('calls afterRender after rendering everything', function() {
-      spyOn(Scoof.Router.prototype, 'afterRender');
+      spyOn(NailPolish.Router.prototype, 'afterRender');
       router.render();
       expect(router.afterRender).toHaveBeenCalled();
     });
@@ -58,7 +58,7 @@ describe("Scoof.Router", function() {
     beforeEach(function() {
       Backbone.history.start();
 
-      RouterClass = Scoof.Router.extend({
+      RouterClass = NailPolish.Router.extend({
         routes: {
           '*wildcard': 'something'
         },

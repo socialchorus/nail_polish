@@ -1,10 +1,10 @@
-describe("Scoof.Events.Flasher", function() {
+describe("NailPolish.Events.Flasher", function() {
   var view, flasher;
 
   beforeEach(function() {
-    view = new Scoof.View();
+    view = new NailPolish.View();
     view.show = jasmine.createSpy('show the flash');
-    flasher = new Scoof.Events.Flasher(view);
+    flasher = new NailPolish.Events.Flasher(view);
   });
 
   describe("flash events", function() {
@@ -12,7 +12,7 @@ describe("Scoof.Events.Flasher", function() {
     beforeEach(function() {
       data = {message: 'yay!'};
       flasher.subscribe();
-      Scoof.Events.publish('flash', data);
+      NailPolish.Events.publish('flash', data);
     });
 
     it("sets the model", function() {

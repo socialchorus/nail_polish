@@ -1,8 +1,8 @@
-describe("Scoof.Widget.Flash", function() {
+describe("NailPolish.Widget.Flash", function() {
   var flash;
 
   beforeEach(function() {
-    flash = new Scoof.Widget.Flash();
+    flash = new NailPolish.Widget.Flash();
   });
 
   describe("perform", function() {

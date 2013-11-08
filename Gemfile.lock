@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    scoof (0.0.1)
+    nail_polish (0.0.1)
       compass-rails (= 2.0.alpha.0)
       hogan_assets
       mustache
@@ -187,7 +187,7 @@ DEPENDENCIES
   database_cleaner
   jasmine!
   jasmine-core!
+  nail_polish!
   rspec-rails
-  scoof!
   selenium-webdriver (~> 2.35)
   zip

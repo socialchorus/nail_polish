@@ -1,4 +1,4 @@
-describe("Scoof.Widget.Modal", function() {
+describe("NailPolish.Widget.Modal", function() {
   var view;
 
   beforeEach(function() {
@@ -10,7 +10,7 @@ describe("Scoof.Widget.Modal", function() {
       "<div class='here-it-is'>Popup!</div> <div class='close-modal'>x</div>"
     );
 
-    var View = Scoof.Widget.Modal.extend({
+    var View = NailPolish.Widget.Modal.extend({
       templateName: 'my_modal_template',
       addListeners: {
         'click .here-it-is': 'oop'
@@ -49,9 +49,9 @@ describe("Scoof.Widget.Modal", function() {
     });
 
     it("publishes a back event, which the router listens for", function() {
-      spyOn(Scoof.Events, 'publish');
+      spyOn(NailPolish.Events, 'publish');
       view.close();
-      expect(Scoof.Events.publish).toHaveBeenCalledWith('route:close-modal');
+      expect(NailPolish.Events.publish).toHaveBeenCalledWith('route:close-modal');
     });
   });
 });

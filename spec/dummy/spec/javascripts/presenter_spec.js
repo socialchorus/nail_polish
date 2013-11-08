@@ -1,10 +1,10 @@
-describe("Scoof.Presenter", function() {
+describe("NailPolish.Presenter", function() {
   var presenter;
 
   describe("default behavior", function() {
     describe("when not initialized with an object to present", function() {
       beforeEach(function() {
-        presenter = new Scoof.Presenter();
+        presenter = new NailPolish.Presenter();
       });
 
       it("toJSON retruns an empty object", function() {
@@ -23,7 +23,7 @@ describe("Scoof.Presenter", function() {
           }
         };
 
-        presenter = new Scoof.Presenter(presented);
+        presenter = new NailPolish.Presenter(presented);
       });
 
       it("return the json", function() {
@@ -38,7 +38,7 @@ describe("Scoof.Presenter", function() {
       });
 
       it("returns the object", function() {
-        presenter = new Scoof.Presenter(json);
+        presenter = new NailPolish.Presenter(json);
         expect(presenter.toJSON()).toBe(json);
       });
     });
@@ -48,28 +48,28 @@ describe("Scoof.Presenter", function() {
     var PresenterClass, presenter;
 
     beforeEach(function() {
-      PresenterClass = Scoof.Presenter.extend({
-        scoof: function() {
+      PresenterClass = NailPolish.Presenter.extend({
+        nail_polish: function() {
           return 'SocialCoder OO FrontEnd';
         }
       });
-      spyOn(Scoof.Presenter.prototype, 'init');
-      spyOn(Scoof.Presenter.prototype, 'initialize');
+      spyOn(NailPolish.Presenter.prototype, 'init');
+      spyOn(NailPolish.Presenter.prototype, 'initialize');
     });
 
     it('calls initialize on initialize', function() {
-      new Scoof.Presenter();
-      expect(Scoof.Presenter.prototype.init).toHaveBeenCalled();
+      new NailPolish.Presenter();
+      expect(NailPolish.Presenter.prototype.init).toHaveBeenCalled();
     });
 
     it('calls init on initialize', function() {
-      new Scoof.Presenter();
-      expect(Scoof.Presenter.prototype.initialize).toHaveBeenCalled();
+      new NailPolish.Presenter();
+      expect(NailPolish.Presenter.prototype.initialize).toHaveBeenCalled();
     });
 
     it("gets it from Backbone", function() {
       presenter = new PresenterClass();
-      expect(presenter.scoof()).toBe('SocialCoder OO FrontEnd');
+      expect(presenter.nail_polish()).toBe('SocialCoder OO FrontEnd');
     });
   });
 
@@ -77,10 +77,10 @@ describe("Scoof.Presenter", function() {
     var PresenterClass, presenter, model, json;
 
     beforeEach(function() {
-      PresenterClass = Scoof.Presenter.extend({
-        include: ['scoof', 'scoff'],
+      PresenterClass = NailPolish.Presenter.extend({
+        include: ['nail_polish', 'scoff'],
 
-        scoof: function() {
+        nail_polish: function() {
           return 'SocialCoder OO FrontEnd';
         },
 
@@ -100,7 +100,7 @@ describe("Scoof.Presenter", function() {
       });
 
       it("adds things that are functions", function() {
-        expect(json.scoof).toBe('SocialCoder OO FrontEnd');
+        expect(json.nail_polish).toBe('SocialCoder OO FrontEnd');
       });
     });
 

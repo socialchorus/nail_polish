@@ -1,4 +1,4 @@
-describe("Scoof.View.ParentFinder", function() {
+describe("NailPolish.View.ParentFinder", function() {
   var selector, attachmentMethod, parent, finder;
 
   beforeEach(function() {
@@ -8,13 +8,13 @@ describe("Scoof.View.ParentFinder", function() {
 
   describe('when parent is undefined', function() {
     it("and selector is undefined it returns undefined", function() {
-      finder = new Scoof.View.ParentFinder(undefined, undefined, attachmentMethod);
+      finder = new NailPolish.View.ParentFinder(undefined, undefined, attachmentMethod);
       expect(finder.perform()).toBeUndefined();
     });
 
     describe('but their is a selector', function() {
       beforeEach(function() {
-        finder = new Scoof.View.ParentFinder(undefined, '#foo', attachmentMethod);
+        finder = new NailPolish.View.ParentFinder(undefined, '#foo', attachmentMethod);
       });
 
       it('and the selector is globally available on the page', function() {
@@ -39,7 +39,7 @@ describe("Scoof.View.ParentFinder", function() {
           append: function () {}
         };
 
-        finder = new Scoof.View.ParentFinder(parent, undefined, attachmentMethod);
+        finder = new NailPolish.View.ParentFinder(parent, undefined, attachmentMethod);
       });
 
       it("returns the parent", function() {
@@ -54,7 +54,7 @@ describe("Scoof.View.ParentFinder", function() {
             append: function () {}
           };
 
-          finder = new Scoof.View.ParentFinder(parent, '#foo', attachmentMethod);
+          finder = new NailPolish.View.ParentFinder(parent, '#foo', attachmentMethod);
         });
 
         it("returns the undefined", function() {
@@ -66,7 +66,7 @@ describe("Scoof.View.ParentFinder", function() {
         beforeEach(function() {
           parent = $('<div class="foo"><span class="find-me"></span></div>');
 
-          finder = new Scoof.View.ParentFinder(parent, selector, attachmentMethod);
+          finder = new NailPolish.View.ParentFinder(parent, selector, attachmentMethod);
         });
 
         it("returns the undefined", function() {
@@ -77,7 +77,7 @@ describe("Scoof.View.ParentFinder", function() {
       describe("but the selector cannot be found", function() {
         beforeEach(function() {
           parent = $('<div class="foo"></div>');
-          finder = new Scoof.View.ParentFinder(parent, selector, attachmentMethod);
+          finder = new NailPolish.View.ParentFinder(parent, selector, attachmentMethod);
         });
 
         it("returns the undefined", function() {
@@ -98,7 +98,7 @@ describe("Scoof.View.ParentFinder", function() {
     describe('when there is a selector', function () {
       describe('can be found', function() {
         beforeEach(function() {
-          finder = new Scoof.View.ParentFinder(parent, selector, attachmentMethod);
+          finder = new NailPolish.View.ParentFinder(parent, selector, attachmentMethod);
         });
 
         it('returns the selector\'s DOM', function () {
@@ -108,7 +108,7 @@ describe("Scoof.View.ParentFinder", function() {
 
       describe('cannot be found', function() {
         beforeEach(function() {
-          finder = new Scoof.View.ParentFinder(parent, '.something-else', attachmentMethod);
+          finder = new NailPolish.View.ParentFinder(parent, '.something-else', attachmentMethod);
         });
 
         it('will return undefined', function() {
@@ -119,7 +119,7 @@ describe("Scoof.View.ParentFinder", function() {
 
     describe('when there is no selector', function() {
       it('returns the $el', function() {
-        finder = new Scoof.View.ParentFinder(parent, undefined, attachmentMethod);
+        finder = new NailPolish.View.ParentFinder(parent, undefined, attachmentMethod);
         expect(finder.perform()).toBe(parent.$el);
       });
     });

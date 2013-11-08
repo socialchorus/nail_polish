@@ -1,4 +1,4 @@
-describe("Scoof.GlobalPublisherAdder", function() {
+describe("NailPolish.GlobalPublisherAdder", function() {
   var xhr, transformed;
 
   beforeEach(function() {
@@ -15,7 +15,7 @@ describe("Scoof.GlobalPublisherAdder", function() {
   describe("when there is no complete attribute in the args", function() {
     beforeEach(function() {
       var args = {};
-      transformed = (new Scoof.GlobalPublisherAdder(args)).perform();
+      transformed = (new NailPolish.GlobalPublisherAdder(args)).perform();
     });
 
     it("adds a complete attribute", function() {
@@ -26,8 +26,8 @@ describe("Scoof.GlobalPublisherAdder", function() {
       var redirectSpy = jasmine.createSpy('event redirect');
       var flashSpy = jasmine.createSpy('event flash');
 
-      Scoof.Events.subscribe('redirect', redirectSpy);
-      Scoof.Events.subscribe('flash', flashSpy);
+      NailPolish.Events.subscribe('redirect', redirectSpy);
+      NailPolish.Events.subscribe('flash', flashSpy);
 
       transformed.complete(xhr);
 
@@ -43,7 +43,7 @@ describe("Scoof.GlobalPublisherAdder", function() {
       var args = {
         complete: originalComplete
       };
-      transformed = (new Scoof.GlobalPublisherAdder(args)).perform();
+      transformed = (new NailPolish.GlobalPublisherAdder(args)).perform();
     });
 
     it("calls the original callback", function() {
@@ -55,8 +55,8 @@ describe("Scoof.GlobalPublisherAdder", function() {
       var redirectSpy = jasmine.createSpy('event redirect');
       var flashSpy = jasmine.createSpy('event flash');
 
-      Scoof.Events.subscribe('redirect', redirectSpy);
-      Scoof.Events.subscribe('flash', flashSpy);
+      NailPolish.Events.subscribe('redirect', redirectSpy);
+      NailPolish.Events.subscribe('flash', flashSpy);
 
       transformed.complete(xhr);
 

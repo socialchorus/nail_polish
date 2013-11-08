@@ -10,5 +10,5 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require scoof
-//= require scoof_widgets
+//= require nail_polish
+//= require nail_polish_widgets

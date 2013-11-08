@@ -6,7 +6,7 @@ require "action_mailer/railtie"
 require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
-require "scoof"
+require "nail_polish"
 
 module Dummy
   class Application < Rails::Application

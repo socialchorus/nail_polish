@@ -1,8 +1,8 @@
-describe("Scoof.AuthTokenAdder", function() {
+describe("NailPolish.AuthTokenAdder", function() {
   var args;
 
   var transformedArguments = function (args) {
-    var adder = new Scoof.AuthTokenAdder(args);
+    var adder = new NailPolish.AuthTokenAdder(args);
     adder.authenticityToken = 'authToken';
     return adder.perform();
   };
