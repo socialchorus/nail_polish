@@ -29,7 +29,7 @@ describe("NailPolish.Widget.Modal", function() {
 
   describe("events", function() {
     it("adds listening for close-modal", function() {
-      expect(view.events()['click .close-modal']).toEqual('closeModal');
+      expect(view.events()['click .close-modal']).toEqual('close');
     });
 
     it("listens to events in addListeners", function() {
@@ -48,10 +48,10 @@ describe("NailPolish.Widget.Modal", function() {
       expect(view.remove).toHaveBeenCalled();
     });
 
-    it("publishes a back event, which the router listens for", function() {
-      spyOn(NailPolish.Events, 'publish');
+    it('calls the template method "onClose"', function() {
+      spyOn(view, 'onClose');
       view.close();
-      expect(NailPolish.Events.publish).toHaveBeenCalledWith('route:close-modal');
+      expect(view.onClose).toHaveBeenCalled();
     });
   });
 

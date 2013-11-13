@@ -4,7 +4,7 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   events: function () {
     _.extend(this.addListeners, {
-      'click .close-modal': 'closeModal'
+      'click .close-modal': 'close'
     });
 
     return NailPolish.View.prototype.events.apply(this);
@@ -31,7 +31,9 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   close: function (e) {
     this.remove();
-    NailPolish.Events.publish('route:close-modal');
-  }
+    this.onClose()
+  },
+
+  onClose: function() {} // to be implemented by subclasses
 });
 
