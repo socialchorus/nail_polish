@@ -32,8 +32,9 @@ NailPolish.Router = Backbone.Router.extend({
   },
 
   page: function (views) {
+    NailPolish.Events.publish('page:new');
     this.$layout.empty();
-    this.render.call(this, views);
+    this.render(views);
   },
 
   render: function (args) {

@@ -2,10 +2,6 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   parentSelector: '#overlay-container',
   attachmentMethod: 'html',
 
-  addListeners: {
-    'click .close-modal': 'close'
-  },
-
   events: function () {
     _.extend(this.addListeners, {
       'click .close-modal': 'closeModal'
@@ -24,8 +20,17 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
     this.$el.html(rendered);
   },
 
+  render: function() {
+    NailPolish.View.prototype.render.apply(this);
+    this.addListenerForClose();
+  },
+
+  addListenerForClose: function() {
+    NailPolish.Events.subscribe('page:new', this.close, this);
+  },
+
   close: function (e) {
-    this.$el.remove();
+    this.remove();
     NailPolish.Events.publish('route:close-modal');
   }
 });

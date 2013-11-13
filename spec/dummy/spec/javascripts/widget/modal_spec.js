@@ -37,21 +37,31 @@ describe("NailPolish.Widget.Modal", function() {
     });
   });
 
-  describe("closeModal", function() {
+  describe("close", function() {
     beforeEach(function() {
       view.render();
     });
 
     it("removes the element from the dom", function() {
-      spyOn(view.$el, 'remove');
+      spyOn(view, 'remove');
       view.close();
-      expect(view.$el.remove).toHaveBeenCalled();
+      expect(view.remove).toHaveBeenCalled();
     });
 
     it("publishes a back event, which the router listens for", function() {
       spyOn(NailPolish.Events, 'publish');
       view.close();
       expect(NailPolish.Events.publish).toHaveBeenCalledWith('route:close-modal');
+    });
+  });
+
+  describe('listening for global events', function() {
+    it('closes when it hears a page:new event', function() {
+      spyOn(view, 'close');
+      view.render();
+
+      NailPolish.Events.publish('page:new');
+      expect(view.close).toHaveBeenCalled();
     });
   });
 });

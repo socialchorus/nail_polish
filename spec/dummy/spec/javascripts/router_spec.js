@@ -28,6 +28,12 @@ describe("NailPolish.Router", function() {
       router.page([view]);
       expect($parent.find('.new-view').length).toBe(1);
     });
+
+    it('triggers a page:new event', function() {
+      spyOn(NailPolish.Events, 'publish');
+      router.page();
+      expect(NailPolish.Events.publish).toHaveBeenCalledWith('page:new');
+    });
   });
 
   describe("render", function() {
