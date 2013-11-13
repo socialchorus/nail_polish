@@ -30,6 +30,7 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   },
 
   close: function (e) {
+    NailPolish.Events.unsubscribe('page:new', this.close, this);
     this.remove();
     this.onClose()
   },

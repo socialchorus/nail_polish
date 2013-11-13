@@ -42,6 +42,12 @@ describe("NailPolish.Widget.Modal", function() {
       view.render();
     });
 
+    it('removes subscription to page:new events', function() {
+      spyOn(NailPolish.Events, 'unsubscribe');
+      view.close();
+      expect(NailPolish.Events.unsubscribe).toHaveBeenCalledWith('page:new', view.close, view);
+    });
+
     it("removes the element from the dom", function() {
       spyOn(view, 'remove');
       view.close();

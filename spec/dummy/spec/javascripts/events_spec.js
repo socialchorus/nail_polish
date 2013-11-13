@@ -29,6 +29,25 @@ describe("NailPolish.Events", function() {
     });
   });
 
+  describe('unsubscribe', function() {
+    it('stops listening to that event', function() {
+      var sentMessage;
+      var context = {
+        foo: function(message) {
+          sentMessage = message;
+        }
+      };
+
+      var handler = function(message) { this.foo(message) };
+
+      NailPolish.Events.subscribe('flash', handler, context);
+      NailPolish.Events.unsubscribe('flash', handler, context);
+      NailPolish.Events.publish('flash', 'do it again some more!');
+
+      expect(sentMessage).toBe(undefined);
+    });
+  });
+
   describe("isWindowsTouch", function(){
     it("should return true for a Windows device", function() {
       navigator.__defineGetter__('userAgent', function(){
