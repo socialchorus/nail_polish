@@ -3,6 +3,9 @@ NailPolish.Router = Backbone.Router.extend({
     this.$layout = $layout;
 
     this.init();
+
+    this.history = [];
+    this.on('route', this.storeHistory, this);
   },
 
   init: function () {},
@@ -51,5 +54,9 @@ NailPolish.Router = Backbone.Router.extend({
   redirect: function (path) {
     // send a redirect message to the Events publisher
     window.location = path;
+  }, 
+
+  storeHistory: function () {
+    this.history.push(Backbone.history.fragment);
   }
 });
