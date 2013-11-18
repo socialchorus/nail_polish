@@ -92,4 +92,70 @@ describe("NailPolish.Router", function() {
       expect(router.something).toHaveBeenCalled();
     });
   });
+
+  describe('storing history', function() {
+    var router, RouterClass;
+
+    beforeEach(function() {
+      Backbone.history.start();
+
+      RouterClass = NailPolish.Router.extend({
+        routes: {
+          'actions': 'actions',
+          'foo': 'foo',
+          'bar': 'bar'
+        },
+
+        actions: jasmine.createSpy('router#action'),
+        foo: jasmine.createSpy('router#foo'),
+        bar: jasmine.createSpy('router#bar')
+      });
+
+      router = new RouterClass();
+    });
+
+    afterEach(function() {
+      Backbone.history.stop();
+    });
+
+    it('starts life with an empty history array', function() {
+      expect(router.history).toEqual([]);
+    });
+
+    it('adds history as it routes', function() {
+      router.go('actions');
+      router.go('foo');
+      router.go('bar');
+      router.go('actions');
+
+      expect(router.history).toEqual(['actions', 'foo', 'bar', 'actions']);
+    });
+
+    describe('when navigating with replace: true otions', function() {
+      it('replace the last entry with the current path', function() {
+        router.go('actions');
+        router.go('foo');
+        router.goReplacingLastHistory('bar');
+
+        expect(router.history).toEqual(['actions', 'bar']);
+      });
+    });
+
+    describe("back", function() {
+      beforeEach(function() {
+        router.history = ['bar', 'actions', 'actions/42/share'];
+      });
+
+      it("should remove the current path from history", function() {
+        router.back();
+        expect(router.history).toEqual(['bar', 'actions']);
+      });
+
+      it('should navigate to the previous place in history', function() {
+        spyOn(router, 'navigate').and.callThrough();
+        router.back();
+        expect(router.navigate).toHaveBeenCalledWith('actions', {trigger: true, replace: true});
+      });
+    });
+  });
 });

@@ -1,7 +1,7 @@
 NailPolish.Router = Backbone.Router.extend({
   initialize: function ($layout) {
     this.$layout = $layout;
-
+    this.history = [];
     this.init();
   },
 
@@ -32,7 +32,7 @@ NailPolish.Router = Backbone.Router.extend({
   },
 
   page: function (views) {
-    NailPolish.Events.publish('page:new');
+    NailPolish.Events.publish('page:new');  
     this.$layout.empty();
     this.render(views);
   },
@@ -48,8 +48,33 @@ NailPolish.Router = Backbone.Router.extend({
     //put your after render stuff here
   },
 
+  // this is usually used for NailPolish.Events to publish a redirect event!
   redirect: function (path) {
-    // send a redirect message to the Events publisher
     window.location = path;
-  }
+  }, 
+
+  go: function(fragment) {
+    this.navigate(fragment, {trigger: true});
+  },
+
+  goReplacingLastHistory: function(fragment) {
+    this.navigate(fragment, { trigger: true, replace: true });
+  },
+
+  back: function () {
+    this.history.pop();
+    var fragment = _.last(this.history);
+    this.goReplacingLastHistory(fragment);
+  },
+
+  storeHistory: function () {
+    this.history.push(Backbone.history.fragment);
+  },
+
+  navigate: function(fragment, options) {
+    options = options || {};
+    Backbone.Router.prototype.navigate.call(this, fragment, options);
+    options.replace && this.history.pop();
+    this.storeHistory();
+  },
 });
