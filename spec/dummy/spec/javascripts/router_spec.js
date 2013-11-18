@@ -110,8 +110,6 @@ describe("NailPolish.Router", function() {
         foo: jasmine.createSpy('router#foo'),
         bar: jasmine.createSpy('router#bar')
       });
-
-      router = new RouterClass();
     });
 
     afterEach(function() {
@@ -119,10 +117,13 @@ describe("NailPolish.Router", function() {
     });
 
     it('starts life with an empty history array', function() {
+      router = new RouterClass();
       expect(router.history).toEqual([]);
     });
 
     it('adds history as it routes', function() {
+      router = new RouterClass();
+
       router.go('actions');
       router.go('foo');
       router.go('bar');
@@ -131,22 +132,23 @@ describe("NailPolish.Router", function() {
       expect(router.history).toEqual(['actions', 'foo', 'bar', 'actions']);
     });
 
-    describe('when navigating with replace: true otions', function() {
-      it('replace the last entry with the current path', function() {
-        router.go('actions');
-        router.go('foo');
-        router.goReplacingLastHistory('bar');
+    it('goReplacingLastHistory replaces the last entry with the current path', function() {
+      router = new RouterClass();
+              
+      router.history = ['actions', 'foo'];
+      router.goReplacingLastHistory('bar');
 
-        expect(router.history).toEqual(['actions', 'bar']);
-      });
+      expect(router.history).toEqual(['actions', 'bar']);
     });
 
     describe("back", function() {
       beforeEach(function() {
+        router = new RouterClass();
         router.history = ['bar', 'actions', 'actions/42/share'];
       });
 
       it("should remove the current path from history", function() {
+        router.history = ['bar', 'actions', 'actions/42/share'];
         router.back();
         expect(router.history).toEqual(['bar', 'actions']);
       });

@@ -2,6 +2,8 @@ NailPolish.Router = Backbone.Router.extend({
   initialize: function ($layout) {
     this.$layout = $layout;
     this.history = [];
+    this.on('route:start', this.storeHistory, this);
+
     this.init();
   },
 
@@ -58,6 +60,7 @@ NailPolish.Router = Backbone.Router.extend({
   },
 
   goReplacingLastHistory: function(fragment) {
+    this.history.pop();
     this.navigate(fragment, { trigger: true, replace: true });
   },
 
@@ -69,12 +72,5 @@ NailPolish.Router = Backbone.Router.extend({
 
   storeHistory: function () {
     this.history.push(Backbone.history.fragment);
-  },
-
-  navigate: function(fragment, options) {
-    options = options || {};
-    Backbone.Router.prototype.navigate.call(this, fragment, options);
-    options.replace && this.history.pop();
-    this.storeHistory();
-  },
+  }
 });
