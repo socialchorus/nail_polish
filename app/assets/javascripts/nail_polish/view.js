@@ -67,6 +67,7 @@ NailPolish.View = Backbone.View.extend({
   },
 
   presenter: function () {
+    debugger;
     var presented = this.model || this.collection || {};
     var presenter = new (this.presenterClass())(presented);
     return presenter.toJSON();
