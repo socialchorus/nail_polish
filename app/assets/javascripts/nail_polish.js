@@ -17,4 +17,5 @@
 //= require nail_polish/presenter
 //= require_tree ./nail_polish/presenters
 //= require nail_polish/router
+//= require nail_polish/app
 
