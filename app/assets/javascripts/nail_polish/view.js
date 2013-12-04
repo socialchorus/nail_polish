@@ -7,6 +7,7 @@ NailPolish.View = Backbone.View.extend({
   initialize: function (opts) {
     opts = opts || {};
     this.parent = opts.parent;
+    this.repository = opts.repository;
     this.attachmentMethod = this.attachmentMethod || 'append';
     this.init(opts);
   },

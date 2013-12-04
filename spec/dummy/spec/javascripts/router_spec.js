@@ -37,16 +37,16 @@ describe("NailPolish.Router", function() {
   });
 
   describe("render", function() {
-    var router;
+    var router, view, viewDom;
 
     beforeEach(function() {
       router = new NailPolish.Router($parent);
+      router.repository = {hello: 'world'};
+      viewDom = $("<div class='new-view'></div>")[0];
     });
 
     it("renders view passed in", function() {
-      var view = new NailPolish.View({parent: $parent});
-      view.el = $("<div class='new-view'></div>")[0];
-
+      view = new NailPolish.View({parent: $parent, el: viewDom});
       router.page([view]);
       expect($parent.find('.new-view').length).toBe(1);
     });
@@ -55,6 +55,43 @@ describe("NailPolish.Router", function() {
       spyOn(NailPolish.Router.prototype, 'afterRender');
       router.render();
       expect(router.afterRender).toHaveBeenCalled();
+    });
+
+    describe('adding the parent', function () {
+      describe("when there is a parent already set", function() {
+        it("will not change the parent", function() {
+          view = new NailPolish.View({parent: $('<div class="somewhere-else"></div>')});
+          router.page([view]);
+          expect(view.parent.is('.somewhere-else')).toBe(true);
+        });
+      });
+
+      describe("when there is no parent", function() {
+        it("adds the parent during the render process", function() {
+          view = new NailPolish.View({el: viewDom});
+          router.page([view]);
+          expect(view.parent).toBe($parent);
+        });
+      });
+    });
+
+    describe('adding the repository', function () {
+      describe("when there is a repository already set", function() {
+        it("will not change the respository", function() {
+          var repo = {some: 'data'};
+          view = new NailPolish.View({repository: repo});
+          router.page([view]);
+          expect(view.repository).toBe(repo);
+        });
+      });
+
+      describe("when there is no repository", function() {
+        it("adds the repository during the render process", function() {
+          view = new NailPolish.View({el: viewDom});
+          router.page([view]);
+          expect(view.repository).toBe(router.repository);
+        });
+      });
     });
   });
 

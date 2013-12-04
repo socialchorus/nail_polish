@@ -41,6 +41,8 @@ NailPolish.Router = Backbone.Router.extend({
 
   render: function (args) {
     _.each(args, function (view) {
+      view.parent = view.parent || this.$layout;
+      view.repository = view.repository || this.repository;
       view.render();
     }.bind(this));
     this.afterRender();
