@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.0.0"
   s.add_dependency 'mustache'
   s.add_dependency 'hogan_assets' # for client side packaging of mustache templates
-  s.add_dependency 'compass-rails', '2.0.alpha.0'
+  s.add_dependency 'compass-rails'
 
 
   s.add_development_dependency 'rspec-rails'
