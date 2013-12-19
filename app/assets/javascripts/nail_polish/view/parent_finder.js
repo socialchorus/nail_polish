@@ -8,7 +8,9 @@ _.extend(NailPolish.View.ParentFinder.prototype, {
   perform: function () {
     if (this.parent) {
       // If it is a backbone view, use the $el for parent
-      if (this.parent.$el) { this.parent = this.parent.$el; }
+      if (this.parent.$el) { 
+        this.parent = this.parent.$el;
+      }
 
       if(this.selector) {
         //pretends it is jquery
