@@ -107,8 +107,9 @@ describe("NailPolish.View", function () {
     });
 
     describe("rendering subviews", function () {
+      var SubView;
       beforeEach(function () {
-        var SubView = NailPolish.View.extend({
+        SubView = NailPolish.View.extend({
           render: jasmine.createSpy('render')
         });
 
@@ -119,7 +120,7 @@ describe("NailPolish.View", function () {
 
           this._subviews = [
             new SubView({model: {n: 1}}),
-            new SubView({model: {n: 2}}),
+            new SubView({model: {n: 2}, parent: 'body'}),
           ];
 
           return this._subviews;
@@ -128,9 +129,14 @@ describe("NailPolish.View", function () {
 
       it("should set itself on subviews as the parent", function () {
         view.render();
-        _.each(view.subviews(), function (sub) {
-          expect(sub.parent).toBe(view);
-        });
+        var sub = view.subviews()[0];
+        expect(sub.parent).toBe(view);
+      });
+
+      it("should not set itself on subviews as the parent if a parent already exists", function () {
+        view.render();
+        var sub = view.subviews()[1];
+        expect(sub.parent).not.toBe(view);
       });
 
       it("should call render on each of the subviews", function () {

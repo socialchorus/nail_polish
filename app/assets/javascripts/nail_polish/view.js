@@ -29,7 +29,7 @@ NailPolish.View = Backbone.View.extend({
 
   renderSubviews: function () {
     _.each(this.subviews(), function (view) {
-      view.parent = this;
+      view.parent = view.parent || this;
       view.render();
     }.bind(this));
   },
