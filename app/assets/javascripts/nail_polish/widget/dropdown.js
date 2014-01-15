@@ -6,6 +6,11 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     'click .menu-item': 'setSelected'
   },
 
+  init: function(){
+    this.className      = this.model.name + '-drop-down';
+    this.menuSelector   = '.' + this.model.name + '-dropdown-menu';
+  },
+
   presenterClass: function () {
     return NailPolish.Presenter.Dropdown;
   },
@@ -27,5 +32,15 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     var $target = $(e.target);
     this.model.selected = $target.attr("data-option");
     this.render();
+    this.afterSelect();
+  },
+
+  afterSelect: function() {
+    //overwrite me in subclass if you need to do stuffs
+  },
+
+  getSelectedValue: function() {
+    return this.model.selected;
   }
+
 });

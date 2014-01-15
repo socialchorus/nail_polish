@@ -14,7 +14,7 @@ NailPolish.Presenter.Dropdown = NailPolish.Presenter.extend({
     returnValue = [];
 
     _.each(this.presented.options, function(value, key){
-      returnValue.push({key: key, value: value});
+      returnValue.unshift({key: key, value: value});
     });
 
     return returnValue;

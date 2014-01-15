@@ -46,7 +46,7 @@ describe("NailPolish.Widget.Dropdown", function(){
 
   describe('clicking a menu item', function() {
     it('should set the selected value to the selected item', function() {
-      dropdown.$('.menu-item')[1].click();
+      dropdown.$('.menu-item')[0].click();
       expect(dropdown.model.selected).toBe("option2")
     });
   });
