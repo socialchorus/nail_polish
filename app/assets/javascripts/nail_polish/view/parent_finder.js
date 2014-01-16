@@ -15,7 +15,7 @@ _.extend(NailPolish.View.ParentFinder.prototype, {
       if(this.selector) {
         //pretends it is jquery
         if (this.parentIsAttachable() && this.parentIsFindable()) {
-          return this.findLocally()
+          return this.findLocally();
         }
       } else {
         // is parent, no selector
@@ -28,8 +28,13 @@ _.extend(NailPolish.View.ParentFinder.prototype, {
   },
 
   findLocally: function() {
-    var found = this.parent.find(this.selector)
-    if (found.length) { return found }
+    var found;
+    if (this.parent.is(this.selector)) {
+      found = this.parent;
+    } else {
+      found = this.parent.find(this.selector);
+    }
+    if (found.length) { return found; }
   },
 
   findGlobally: function() {

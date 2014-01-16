@@ -62,14 +62,26 @@ describe("NailPolish.View.ParentFinder", function() {
         });
       });
 
-      describe("and the selector can be found", function() {
+      describe("and the selector can be found inside the parent", function() {
         beforeEach(function() {
           parent = $('<div class="foo"><span class="find-me"></span></div>');
 
           finder = new NailPolish.View.ParentFinder(parent, selector, attachmentMethod);
         });
 
-        it("returns the undefined", function() {
+        it("returns the element", function() {
+          expect(finder.perform().hasClass('find-me')).toBe(true);
+        });
+      });
+
+      describe('and the selector is the same as the parent\'s selector', function() {
+        beforeEach(function() {
+          parent = $('<div class="find-me"></div>');
+
+          finder = new NailPolish.View.ParentFinder(parent, selector, attachmentMethod);
+        });
+
+        it('returns the parent', function() {
           expect(finder.perform().hasClass('find-me')).toBe(true);
         });
       });
