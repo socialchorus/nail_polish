@@ -1,0 +1,120 @@
+.block {
+  @include line;
+}
+
+.overflown {
+  overflow: visible;
+}
+
+.rounded {
+  @include rounded;
+}
+
+.bordered {
+  @include bordered;
+}
+
+.left-bordered {
+  border-left: 1px solid $neutral-light-color;
+}
+
+.right-bordered {
+  border-right: 1px solid $neutral-light-color;
+}
+
+.top-bordered {
+  border-top: 1px solid $neutral-light-color;
+}
+
+.bottom-bordered {
+  border-bottom: 1px solid $neutral-light-color;
+}
+
+.no-border {
+  border: none;
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.centerable {
+  display: inline-block;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+.light-text{
+  color: $neutral-base-color;
+}
+
+.light-headline {
+  color: $light-color;
+  @include text-shadow(1px 1px 0px $body-color);
+}
+
+/* this is for page-width sections of the page */
+.page-inner {
+  @include line;
+  padding: $spacing*2 0 $spacing 0;
+}
+
+.inner-top {
+  padding-top: $spacing;
+}
+
+.inner-bottom {
+  padding-bottom: $spacing;
+}
+
+.inner-left {
+  padding-left: $spacing;
+}
+
+.inner-right {
+  padding-right: $spacing;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.shadow-container {
+  overflow: hidden;
+  padding: 0 ($spacing * 0.3) ($spacing * 0.3) 0;
+}
+
+.accent-background {
+  background-color: $accent-button-base-color;
+}
+
+/* These three styles aren't very descriptive should have text appended */
+.small {
+  @include small-text;
+}
+
+.accent-text {
+  color: $accent-button-base-color;
+}
+
+.primary-text {
+  color: $primary-button-base-color;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.wrap {
+  @include word-break(break-all);
+}
+
+.warning-text {
+  color: $error-color;
+}
+
+.italic {
+  font-style: italic;
+}

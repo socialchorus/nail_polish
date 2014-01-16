@@ -1,0 +1,15 @@
+.panel {
+  background-color: $light-color;
+  @include border-radius($border-radius-size);
+  @include bordered;
+  @include box-shadow(3px 3px 0 rgba(0,0,0,0.07));
+}
+
+.flat-panel {
+  background-color: $neutral-superlight-color;
+  @include bordered;
+
+  &.lightest {
+    background-color: $light-color;
+  }
+}

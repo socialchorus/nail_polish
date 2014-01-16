@@ -1,0 +1,30 @@
+.s-row { float: left; width: auto; }
+
+.m-row {
+  width: 100%;
+  @include line;
+}
+
+.m-1of2{width:50%;}
+.m-1of3{width:33.33333%;}
+.m-2of3{width:66.66666%;}
+.m-1of4{width:25%;}
+.m-3of4{width:75%;}
+.m-1of5{width:20%;}
+.m-2of5{width:40%;}
+.m-3of5{width:60%;}
+.m-4of5{width:80%;}
+.m-1of6{width:16.66666%;}
+.m-4of6{width:66.66666%;}
+.m-5of6{width:83.33333%;}
+.m-1of10{width:10%;}
+.m-3of10{width:30%;}
+.m-9of10{width: 90%}
+
+.s-hidden {
+  display: block;
+}
+
+.m-hidden {
+  display: none;
+}

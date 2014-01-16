@@ -1,0 +1,32 @@
+.drop-down-menu {
+  position: absolute;
+  margin-top: 55px;
+  background-color: $light-color;
+  color: $body-color;
+  @include bordered;
+  @include box-shadow(2px 2px 0 rgba(0,0,0,0.07));
+  @include border-radius;
+  min-width: 150px;
+  cursor: pointer;
+
+  display: none;
+  z-index: 200;
+
+  .caret {
+    width: 23px;
+    height: 16px;
+    background: transparent image-url('nail_polish/elements/menu_caret.png') no-repeat;
+    position: absolute;
+    top: -15px;
+    left: $spacing;
+  }
+}
+
+.unit-right .drop-down-menu {
+  right: 0;
+
+  .caret {
+    left: auto;
+    right: $spacing;
+  }
+}

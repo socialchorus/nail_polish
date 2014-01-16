@@ -1,0 +1,13 @@
+#page {
+  #content {
+    border-left: 1px solid $light-color;
+    border-right: 1px solid $light-color;
+    margin: 0 auto;
+    width: $page-width;
+  }
+}
+
+.page-width {
+  width: $page-width;
+  margin: 0 auto;
+}

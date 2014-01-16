@@ -1,0 +1,71 @@
+body {
+  color: $body-color;
+  background: $body-color;
+  font-family: $body-font;
+  font-size: $em;
+  text-rendering: optimizeLegibility;
+  line-height: $line-height;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: normal;
+  padding-bottom: $em*0.5;
+}
+
+h1, h2, h3 {
+  font-family: $headline-font;
+  @include text-shadow(1px 1px 0px #fff);
+}
+
+h4,h5,h6,p{
+ font-family: $body-font;
+}
+
+h1 {
+  font-size: $em*1.5;
+}
+
+h2 {
+  font-size: $em*1.2;
+}
+
+h3 {
+  font-size: $em;
+}
+
+h4 {
+  font-size: $em*0.75;
+}
+
+h5 {
+  @include small-text;
+}
+
+h6 {
+  font-size: $em*0.67;
+}
+
+a {
+  color: $primary-button-base-color;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a.plain {
+  color: $neutral-dark-color;
+}
+
+a.plain:hover {
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  background-color: $neutral-light-color;
+  height: 1px;
+  @include box-shadow($light-color 0 1px 0px);
+}

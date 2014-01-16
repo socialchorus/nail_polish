@@ -1,0 +1,80 @@
+button,
+input[type=submit] {
+  width: 100%;
+}
+
+button,
+input[type=submit],
+a.button,
+div.button {
+  font-size: $em*1.2;
+  font-family: $headline-font;
+  font-weight: normal;
+  background-color: $primary-button-base-color;
+  color: $light-color;
+  display: block;
+  padding: $spacing*1.2 $spacing*3;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: normal;
+
+  @include rounded;
+  @include shadowed;
+  @include text-shadowed;
+  @include line;
+
+  &:hover {
+    text-decoration: none;
+    background-color: $primary-button-bright-color;
+  }
+
+  &:active {
+    background-color: $primary-button-dark-color;
+  }
+
+  &.accent {
+    background-color: $accent-button-base-color;
+    color: $light-color;
+
+    &:hover {
+      background-color: $accent-button-bright-color;
+    }
+
+    &:active {
+      background-color: $accent-button-dark-color;
+    }
+  }
+
+  &.neutral {
+    background-color: $neutral-base-color;
+
+    &:hover {
+      background-color: $neutral-bright-color;
+    }
+
+    &:active {
+      background-color: $neutral-dark-color;
+    }
+  }
+
+  &.success {
+    background-color: $success-base-color;
+
+    &:hover {
+      background-color: $success-bright-color;
+    }
+
+    &:active {
+      background-color: $success-dark-color;
+    }
+  }
+
+  &.disabled {
+    @include opacity(0.3);
+  }
+
+  &.small {
+    @include small-text;
+  }
+}

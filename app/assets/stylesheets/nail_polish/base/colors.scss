@@ -1,0 +1,22 @@
+$light-color: #fff;
+$body-color: #333;
+
+$success-base-color:   #28c891;
+$success-bright-color: #48d0a1;
+$success-dark-color:   #22aa76;
+
+$primary-button-base-color:   #1f85ec;
+$primary-button-bright-color: #4097ef;
+$primary-button-dark-color:   #1a71cd;
+
+$accent-button-base-color:   #ef5401;
+$accent-button-bright-color: #f16d26;
+$accent-button-dark-color:   #cb4700;
+
+$error-color: #ec1f1f;
+
+$neutral-superlight-color: #eee;
+$neutral-light-color: #ccc;
+$neutral-base-color: #666;
+$neutral-bright-color: lighten($neutral-base-color, 15%);
+$neutral-dark-color: darken($neutral-base-color, 15%);

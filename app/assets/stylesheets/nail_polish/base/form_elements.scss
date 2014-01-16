@@ -1,0 +1,106 @@
+.input-container {
+  // added values are for the border and box-shadow
+  margin-top: $input-top-padding + 3;
+  margin-bottom: $input-top-padding;
+  margin-right: $input-side-padding + 2;
+  margin-left: $input-side-padding;
+}
+
+.input,
+input[type=text],
+input[type=password],
+input[type=email],
+textarea {
+  display: block;
+  width: 100%;
+
+  background-color: $light-color;
+  font-size: $em;
+  padding: $input-top-padding  $input-side-padding;
+  @include input-margin-fix;
+
+  @include bordered;
+  @include box-shadow(inset 0px 2px 0px $neutral-light-color);
+  @include border-radius;
+
+  &:focus {
+    @include highlighted-input-padding;
+    border: 2px solid $primary-button-base-color;
+  }
+}
+
+/* A fake input will look like an input, but not be usable.
+   This will be used for */ 
+.fake-input {
+  background-color: $light-color;
+  font-size: $em;
+  @include border-radius;
+
+  .input-border {
+    @include line;
+    @include bordered;
+    @include box-shadow(inset 0px 2px 0px $neutral-light-color);
+    @include border-radius;
+  }
+
+  > .inner {
+    padding: $input-top-padding  $input-side-padding;
+  }
+}
+
+input[type=checkbox] {
+  // TODO: see about building something custom with Marc
+  -webkit-appearance: checkbox;
+}
+
+.input-select {
+  @include line;
+
+  .input-select-trigger {
+    height: 48px;
+    border-left: 1px solid $neutral-light-color;
+
+    .inner {
+      cursor: default;
+      color: $neutral-base-color;
+      padding: 7px 13px; // good for a + text character
+      // below works for drop-down icon
+      // padding: 2*$spacing 1.5*$spacing;
+    }
+  }
+}
+
+textarea {
+  width: 100%;
+  font-size: $em * 0.8;
+  background-color: #f1f1f1;
+  min-height: 100px;
+}
+
+@-moz-document url-prefix() {
+  textarea {
+    font-family: $body-font;
+  }
+}
+
+form {
+  &.error {
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    textarea {
+      border: 2px solid $error-color;
+      @include highlighted-input-padding;
+
+      &:focus {
+        @include highlighted-input-padding;
+        border: 2px solid $primary-button-base-color;
+      }
+    }
+
+    h6 {
+      color: $error-color;
+    }
+  }
+}
+
