@@ -1,5 +1,5 @@
 describe("NailPolish.Widget.Dropdown", function(){
-  var dropdown, options, opts;
+  var dropdownView, options, opts;
 
   beforeEach(function() {
     HoganTemplates['dropdown'] = Hogan.compile(
@@ -18,9 +18,7 @@ describe("NailPolish.Widget.Dropdown", function(){
 
     options = {"option1": "Option 1", 'option2': "Option 2"};
 
-    var View = NailPolish.Widget.Dropdown.extend({
-      model: {options: options, selected: ""},
-      selectable: options,
+    View = NailPolish.Widget.Dropdown.extend({
       templateName: 'dropdown',
       selectedOption: '#search-channel',
       menuSelector: '.dropdown-menu',
@@ -28,8 +26,11 @@ describe("NailPolish.Widget.Dropdown", function(){
       parentSelector: '#jasmine_content'
     });
 
-    dropdown = new View();
-    dropdown.render();
+    DummyDropdown = NailPolish.Models.Dropdown.extend({options: options});
+
+    model = new DummyDropdown();
+    dropdownView = new View({model: model});
+    dropdownView.render();
   })
 
   afterEach(function(){
@@ -39,15 +40,15 @@ describe("NailPolish.Widget.Dropdown", function(){
   describe('#toggle', function() {
     it('should toggle the hide/show class', function() {
       spyOn($.fn, "toggleClass").and.callThrough();
-      dropdown.toggle();
+      dropdownView.toggle();
       expect($.fn.toggleClass).toHaveBeenCalled();
     });
   });
 
-  describe('clicking a menu item', function() {
+  describe('clicking a menu-itemnu item', function() {
     it('should set the selected value to the selected item', function() {
-      dropdown.$('.menu-item')[0].click();
-      expect(dropdown.model.selected).toBe("option2")
+      dropdownView.$('.menu-item')[1].click();
+      expect(dropdownView.model.selected()).toBe("option2")
     });
   });
 });

@@ -7,8 +7,8 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
   },
 
   init: function(){
-    this.className      = this.model.name + '-drop-down';
-    this.menuSelector   = '.' + this.model.name + '-dropdown-menu';
+    this.className      = this.model.get('name') + '-drop-down';
+    this.menuSelector   = '.' + this.model.get('name') + '-dropdown-menu';
   },
 
   presenterClass: function () {
@@ -30,7 +30,7 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
 
   setSelected: function(e){
     var $target = $(e.target);
-    this.model.selected = $target.attr("data-option");
+    this.model.set('selected_key', $target.attr("data-option"));
     this.render();
     this.afterSelect();
   },

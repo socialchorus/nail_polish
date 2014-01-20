@@ -23,3 +23,4 @@ var NailPolish = {
 };
 
 NailPolish.Widget = {};
+NailPolish.Models = {};
