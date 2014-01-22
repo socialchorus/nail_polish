@@ -55,6 +55,11 @@
   @include text-shadow(1px 1px 0px $body-color);
 }
 
+.light-headline-shadowless {
+  color: $light-color;
+  @include text-shadow(none);
+}
+
 /* this is for page-width sections of the page */
 .page-inner {
   @include line;
