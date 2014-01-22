@@ -38,6 +38,11 @@
 .spacer {
   width: $spacing;
   height: $spacing;
+
+  &.half {
+    width: $spacing / 2;
+    height: $spacing / 2;
+  }
 }
 
 .s-hidden {
