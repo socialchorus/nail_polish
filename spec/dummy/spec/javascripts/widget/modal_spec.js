@@ -32,6 +32,10 @@ describe("NailPolish.Widget.Modal", function() {
       expect(view.events()['click .close-modal']).toEqual('close');
     });
 
+    it("adds listening for .cancel-link", function() {
+      expect(view.events()['click .cancel-link a']).toEqual('close');
+    });
+
     it("listens to events in addListeners", function() {
       expect(view.events()['click .here-it-is']).toEqual('oop');
     });

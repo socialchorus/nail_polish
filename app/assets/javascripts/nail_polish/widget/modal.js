@@ -4,7 +4,8 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   events: function () {
     _.extend(this.addListeners, {
-      'click .close-modal': 'close'
+      'click .close-modal': 'close',
+      'click .cancel-link a': 'close'
     });
 
     return NailPolish.View.prototype.events.apply(this);
