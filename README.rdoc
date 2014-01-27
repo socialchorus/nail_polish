@@ -1,8 +1,6 @@
-= NailPolish: SocialChorus/SocialChorus OO FrontEnd
+= NailPolish: SocialChorus/SocialChorus OO Frontend
 
-NailPolish is a front-end framework used by the SocialCoder's a SocialChorus.
-
-SocialCoders use a modified version of OOCSS, and have an set of Backbone
+NailPolish is a frontend framework used by the SocialCoders at SocialChorus. With NailPolish, SocialCoders provide a modified version of OOCSS and a set of Backbone
 conventions.
 
 == TODO
