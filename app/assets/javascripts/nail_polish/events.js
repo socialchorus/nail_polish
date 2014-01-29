@@ -26,3 +26,5 @@ NailPolish.Events = {
     this.publisher.off(event, callback, context);
   }
 };
+
+NailPolish.Events['click'] = NailPolish.Events.isTouch() ? NailPolish.Events.startEvent+' ' : 'click ';

@@ -1,0 +1,23 @@
+// .dropdown-container {
+//   position:absolute;
+//   right:0;
+// }
+
+.menu-item-wrapper {
+  position: relative;
+  z-index: 100;
+}
+
+.menu-item {
+  border-bottom: 1px solid $neutral-light-color;
+
+  .inner {
+    padding: $spacing+3 $spacing*2 ;
+  }
+
+  &:hover {
+    background-color: $neutral-superlight-color;
+  }
+
+  a { color: $body-color; }
+}

@@ -1,0 +1,1 @@
+NailPolish.Models.Menu = NailPolish.Models.Dropdown.extend({});
