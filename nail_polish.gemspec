@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
 
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'rspec-instafail'
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'selenium-webdriver', '~> 2.35'
   s.add_development_dependency 'database_cleaner'

@@ -1,18 +1,21 @@
 NailPolish.Widget.Menu = NailPolish.View.extend({
-//  templateName: 'templates/menu',
-//  parentSelector: '#header .menu-container',
-//  attachmentMethod: "prepend",
-
+  parentSelector: '.menu-container',
+  templateName: 'nail_polish/templates/menu',
   addListeners: {
     "click .menu-trigger": 'toggleMenu',
-    "click .nav-item a": 'navigate' // see comment in navigate
+    "click .menu-item a": 'menuItemClick'
+  },
+
+  onMenuItemClick: function ($element) {
+    // hook in here
+  },
+
+  presenterClass: function() {
+    return NailPolish.Presenter.Menu;
   },
 
   toggleMenu: function(e) {
-
-    // XXX FIXME drop-down-menu => menu?
-
-    if (this.$('.drop-down-menu').css('display') == 'block') {
+    if (this.menuIsVisible()) {
       this.hideMenu();
     } else {
       this.hideAllMenus();
@@ -20,24 +23,28 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
     }
   },
 
+  menuIsVisible: function() {
+    return this.$('.menu-items').is(':visible');
+  },
+
   showMenu: function(e) {
-    e.stopPropagation();
-    e.preventDefault();
     this.$('.menu-trigger').addClass("selected");
-    this.$('.drop-down-menu').css("display", "block");
+    this.$('.menu-items').css("display", "block");
     this.onBodyClick = this.hideMenu.bind(this);
     $('body').on(NailPolish.Events.click, this.onBodyClick);
+    e.stopPropagation();
+    e.preventDefault();
   },
 
   hideMenu: function() {
     this.$('.menu-trigger').removeClass("selected");
-    this.$('.drop-down-menu').css("display", "none");
+    this.$('.menu-items').css("display", "none");
     this.removeBodyListener();
   },
 
   hideAllMenus: function() {
     $('.menu-trigger').removeClass("selected");
-    $('.drop-down-menu').css("display", "none");
+    $('.menu-items').css("display", "none");
   },
 
   removeBodyListener: function() {
@@ -47,18 +54,10 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
     }
   },
 
-  // iphone has some issues going via the normal navigation in Backbone.js
-  // both with js routes and with regular routes. We are sad :(
-  navigate: function(e) {
+  menuItemClick: function(e) {
+    this.onMenuItemClick($(e.currentTarget));
+    this.hideMenu();
     e.preventDefault();
     e.stopPropagation();
-    var href = $(e.currentTarget).attr('href');
-    var isJsRoute = href.match(/^#/);
-    if (isJsRoute) {
-      NailPolish.router.go(href);
-    } else {
-      NailPolish.Events.publish('redirect', href);
-    }
-    this.hideMenu();
   }
 });

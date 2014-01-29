@@ -1,5 +1,5 @@
 NailPolish.Widget.Dropdown = NailPolish.View.extend({
-  templateName: 'templates/dropdown',
+  templateName: 'nail_polish/templates/dropdown',
 
   events: {
     'click .dropdown-toggle': 'toggle',

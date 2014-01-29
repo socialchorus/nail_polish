@@ -1,23 +1,59 @@
-// .dropdown-container {
-//   position:absolute;
-//   right:0;
-// }
+.menu-container {
+  .menu-item-wrapper {
+    position: relative;
+    z-index: 100;
 
-.menu-item-wrapper {
-  position: relative;
-  z-index: 100;
-}
-
-.menu-item {
-  border-bottom: 1px solid $neutral-light-color;
-
-  .inner {
-    padding: $spacing+3 $spacing*2 ;
+    h3 {
+      padding-bottom: 0;
+      text-shadow: none;
+    }
   }
 
-  &:hover {
-    background-color: $neutral-superlight-color;
+  .menu-items {
+    @include border-radius;
+    background-color: $light-color;
+    border: 1px solid $neutral-light-color;
+    position: absolute;
+    top: 56px;
+    width: 213px;
   }
 
-  a { color: $body-color; }
+  .menu-item {
+    border-bottom: 1px solid $neutral-light-color;
+
+    &:hover {
+      background-color: $neutral-superlight-color;
+    }
+
+    a { 
+      color: $body-color; 
+      text-decoration: none;
+    }
+
+    .icon {
+      padding-left: 2.5*$spacing;
+      background-position: 0 50%;
+    }
+
+    .link-action {
+      background-image: url(/assets/nail_polish/elements/link_action.png);
+      background-repeat: no-repeat;
+    }
+  }
+
+  .white-down-arrow {
+    padding-right: 2*$spacing;
+    background: transparent url(/assets/nail_polish/elements/white_down_arrow.png) no-repeat;
+    background-position: center right;
+  }
+
+  .menu-caret {
+    height: 16px;
+    width: 100%;
+    background: transparent url(/assets/nail_polish/elements/menu_caret.png) no-repeat;
+    position: absolute;
+    background-position: top right;
+    top: -15px;
+    right: 17px;
+  }
 }

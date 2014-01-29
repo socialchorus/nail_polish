@@ -1,1 +1,1 @@
-NailPolish.Models.Menu = NailPolish.Models.Dropdown.extend({});
+NailPolish.Models.Menu = Backbone.Model.extend({});

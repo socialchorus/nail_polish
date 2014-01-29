@@ -9,6 +9,7 @@
 //= require nail_polish/overrides/global_publisher_adder
 //= require nail_polish/overrides/for_backbone
 //
+//= require_tree ./nail_polish/templates
 //= require nail_polish/events
 //= require nail_polish/events/redirector
 //= require nail_polish/events/flasher
