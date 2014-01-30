@@ -36,21 +36,23 @@
     }
 
     .link-action {
-      background-image: url(image_path('/assets/nail_polish/elements/link_action.png'));
+      background-image: url(<%= asset_path('/assets/nail_polish/elements/link_action.png') %>);
       background-repeat: no-repeat;
     }
   }
 
   .white-down-arrow {
     padding-right: 2*$spacing;
-    background: transparent url(image_path('/assets/nail_polish/elements/white_down_arrow.png')) no-repeat;
+    background-image: url(<%= asset_path('/assets/nail_polish/elements/white_down_arrow.png') %>);
+    background-repeat: no-repeat;
     background-position: center right;
   }
 
   .menu-caret {
     height: 16px;
     width: 100%;
-    background: transparent url(image_path('/assets/nail_polish/elements/menu_caret.png')) no-repeat;
+    background-image: url(<%= asset_path('/assets/nail_polish/elements/menu_caret.png') %>);
+    background-repeat: no-repeat;
     position: absolute;
     background-position: top right;
     top: -15px;
