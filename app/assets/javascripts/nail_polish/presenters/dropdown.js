@@ -10,12 +10,8 @@ NailPolish.Presenter.Dropdown = NailPolish.Presenter.extend({
   },
 
   selectable_items: function(){
-    returnValue = [];
-
-    _.each(this.options, function(value, key){
-      returnValue.push({key: key, value: value});
+    return _.map(this.options, function(value, key){
+      return {key: key, value: value};
     });
-
-    return returnValue;
   }
 });

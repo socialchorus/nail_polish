@@ -6,6 +6,8 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     'click .menu-item': 'setSelected'
   },
 
+  hiddenClass: 'l-hidden',
+
   init: function(){
     this.className      = this.model.get('name') + '-drop-down';
     this.menuSelector   = '.' + this.model.get('name') + '-dropdown-menu';
@@ -25,8 +27,6 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     var rendered = template.render(this.presenter());
     this.$el.html(rendered);
   },
-
-  hiddenClass: 'hidden',
 
   setSelected: function(e){
     var $target = $(e.target);
