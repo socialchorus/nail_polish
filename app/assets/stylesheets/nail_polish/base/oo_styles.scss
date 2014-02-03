@@ -10,6 +10,12 @@
   @include rounded;
 }
 
+.round {
+  height: $spacing * 3.2;
+  width: $spacing * 3.2;
+  border-radius: 50%;
+}
+
 .bordered {
   @include bordered;
 }
@@ -46,7 +52,7 @@
   font-weight: bold;
 }
 
-.light-text{
+.light-text {
   color: $neutral-base-color;
 }
 
@@ -95,6 +101,10 @@
   background-color: $accent-button-base-color;
 }
 
+.light-background {
+  background-color: $neutral-superlight-color;
+}
+
 /* These three styles aren't very descriptive should have text appended */
 .small {
   @include small-text;
@@ -122,4 +132,12 @@
 
 .italic {
   font-style: italic;
+}
+
+.absoulte {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
 }
