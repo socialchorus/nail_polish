@@ -33,8 +33,17 @@ NailPolish.Router = Backbone.Router.extend({
     return this;
   },
 
+  fullPath: function() {
+    var history = Backbone.history
+    var path = history.location.pathname
+    if (history.getFragment().length) {
+      path = path + '#' + history.getFragment();
+    }
+    return path;
+  },
+
   page: function (views) {
-    NailPolish.Events.publish('page:new');  
+    NailPolish.Events.publish('page:new');
     this.$layout.empty();
     this.render(views);
   },
@@ -55,7 +64,7 @@ NailPolish.Router = Backbone.Router.extend({
   // this is usually used for NailPolish.Events to publish a redirect event!
   redirect: function (path) {
     window.location = path;
-  }, 
+  },
 
   go: function(fragment) {
     this.navigate(fragment, {trigger: true});

@@ -95,6 +95,45 @@ describe("NailPolish.Router", function() {
     });
   });
 
+  describe("fullPath", function() {
+   var router, RouterClass;
+
+    beforeEach(function() {
+      Backbone.history.start();
+
+      RouterClass = NailPolish.Router.extend({
+        routes: {
+          '*wildcard': 'root',
+          'somewhere' : 'somewhere'
+        },
+        somewhere: jasmine.createSpy('router#somewhere'),
+        root: jasmine.createSpy('router#root')
+      });
+
+      router = new RouterClass();
+    });
+
+    afterEach(function () {
+      Backbone.history.stop();
+    });
+
+    describe("when there is a # in the url", function() {
+      it("returns the full path with the #somewhere", function() {
+        router.navigate('#somewhere', {trigger: true});
+
+        expect(router.fullPath()).toEqual('/#somewhere');
+      });
+    });
+
+    describe("when there is not a # in the url", function() {
+      it("returns the full path with the #", function() {
+        router.navigate('', {trigger: true});
+
+        expect(router.fullPath()).toEqual('/');
+      });
+    });
+  });
+
   describe("going to a route", function() {
     var router, RouterClass;
 
@@ -171,7 +210,7 @@ describe("NailPolish.Router", function() {
 
     it('goReplacingLastHistory replaces the last entry with the current path', function() {
       router = new RouterClass();
-              
+
       router.history = ['actions', 'foo'];
       router.goReplacingLastHistory('bar');
 
