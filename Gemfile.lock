@@ -17,7 +17,7 @@ GIT
 PATH
   remote: .
   specs:
-    nail_polish (0.2.3)
+    nail_polish (0.2.5)
       compass-rails
       hogan_assets
       mustache
