@@ -84,7 +84,17 @@ textarea {
 }
 
 form {
-  &.error {
+  .error-message {
+    display: none;
+  }
+
+  .error {
+    .error-message {
+      display: block;
+      padding: 0;
+      padding-top: 3px;
+    }
+
     input[type=text],
     input[type=password],
     input[type=email],
