@@ -41,15 +41,15 @@ describe('NailPolish.Widget.Menu', function() {
       view.menuItemClick(event);
       
       expect(view.hideMenu).toHaveBeenCalled();
-      expect(event.preventDefault).toHaveBeenCalled();
-      expect(event.stopPropagation).toHaveBeenCalled();
+      expect(event.preventDefault).not.toHaveBeenCalled();
+      expect(event.stopPropagation).not.toHaveBeenCalled();
     });
 
     it('should call the hook method', function() {
       spyOn(view, 'onMenuItemClick');
       view.menuItemClick(event);
 
-      expect(view.onMenuItemClick).toHaveBeenCalledWith($(event.currentTarget));
+      expect(view.onMenuItemClick).toHaveBeenCalledWith(event);
     });
   });
 });

@@ -6,7 +6,7 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
     "click .menu-item a": 'menuItemClick'
   },
 
-  onMenuItemClick: function ($element) {
+  onMenuItemClick: function (e) {
     // hook in here
   },
 
@@ -55,9 +55,7 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
   },
 
   menuItemClick: function(e) {
-    this.onMenuItemClick($(e.currentTarget));
+    this.onMenuItemClick(e);
     this.hideMenu();
-    e.preventDefault();
-    e.stopPropagation();
   }
 });
