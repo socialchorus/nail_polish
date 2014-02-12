@@ -114,29 +114,21 @@ describe("NailPolish.View", function () {
         });
 
         view.subviews = function () {
-          if (this._subviews) {
-            return this._subviews;
-          }
-
-          this._subviews = [
+          return [
             new SubView({model: {n: 1}}),
             new SubView({model: {n: 2}, parent: 'body'}),
           ];
-
-          return this._subviews;
         };
+
+        view.repository = {hello: 'world'};
       });
 
-      it("should set itself on subviews as the parent", function () {
+      it('passes it down the repository', function() {
         view.render();
-        var sub = view.subviews()[0];
-        expect(sub.parent).toBe(view);
-      });
 
-      it("should not set itself on subviews as the parent if a parent already exists", function () {
-        view.render();
-        var sub = view.subviews()[1];
-        expect(sub.parent).not.toBe(view);
+        _.each(view._subviews, function (sub) {
+          expect(sub.repository).toBe(view.repository);
+        });
       });
 
       it("should call render on each of the subviews", function () {
@@ -144,6 +136,23 @@ describe("NailPolish.View", function () {
         _.each(view.subviews(), function (sub) {
           expect(sub.render).toHaveBeenCalled();
         });
+      });
+
+      it('stores the subviews, for cleanup later', function() {
+        view.render();
+        expect(view._subviews.length).toBe(2);
+      });
+
+      it("should set itself on subviews as the parent", function () {
+        view.render();
+        var sub = view._subviews[0];
+        expect(sub.parent).toBe(view);
+      });
+
+      it("should not set itself on subviews as the parent if a parent already exists", function () {
+        view.render();
+        var sub = view._subviews[1];
+        expect(sub.parent).not.toBe(view);
       });
     });
   });
@@ -245,6 +254,43 @@ describe("NailPolish.View", function () {
 
       it("leaves non-click events unchanged too", function () {
         expect(view.events()['change input']).toBe('onChange');
+      });
+    });
+  });
+
+  describe('remove', function() {
+    var SubView, view;
+
+    beforeEach(function () {
+      SubView = NailPolish.View.extend({
+        subviews: function() {
+          return [
+            new SubView({model: {n: 1}}),
+            new SubView({model: {n: 2}, parent: 'body'}),
+          ];
+        }
+      });
+
+      spyOn(Backbone.View.prototype, 'remove');
+
+      view = new SubView();
+    });
+
+    it('calls "super"', function() {
+      view.remove();
+      expect(Backbone.View.prototype.remove).toHaveBeenCalled();
+    });
+
+    it('calls remove on each of its subviews', function() {
+      view._subviews = view.subviews();
+      _.each(view._subviews, function(subview) {
+        spyOn(subview, 'remove');
+      });
+
+      view.remove();
+
+      _.each(view._subviews, function(subview) {
+        expect(subview.remove).toHaveBeenCalled();
       });
     });
   });

@@ -1,4 +1,4 @@
-NailPolish.Router = Backbone.Router.extend({
+NailPolish.Router = Backbone.Router.extend(_.extend(_.clone(NailPolish.SubviewManager), {
   initialize: function ($layout) {
     this.$layout = $layout;
     this.history = [];
@@ -44,17 +44,18 @@ NailPolish.Router = Backbone.Router.extend({
 
   page: function (views) {
     NailPolish.Events.publish('page:new');
+    this.remove();
     this.$layout.empty();
     this.render(views);
   },
 
-  render: function (args) {
-    _.each(args, function (view) {
-      view.parent = view.parent || this.$layout;
-      view.repository = view.repository || this.repository;
-      view.render();
-    }.bind(this));
+  render: function (subviews) {
+    this.renderEach(subviews);
     this.afterRender();
+  },
+
+  defaultParent: function() {
+    return this.$layout;
   },
 
   afterRender: function(){
@@ -84,4 +85,4 @@ NailPolish.Router = Backbone.Router.extend({
   storeHistory: function () {
     this.history.push(Backbone.history.fragment);
   }
-});
+}));

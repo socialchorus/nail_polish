@@ -1,4 +1,4 @@
-NailPolish.View = Backbone.View.extend({
+NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManager), {
   addListeners: {},
   presenterClass: function () {
     return NailPolish.Presenter;
@@ -27,11 +27,8 @@ NailPolish.View = Backbone.View.extend({
     return [];
   },
 
-  renderSubviews: function () {
-    _.each(this.subviews(), function (view) {
-      view.parent = view.parent || this;
-      view.render();
-    }.bind(this));
+  renderSubviews: function() {
+    this.renderEach(this.subviews());
   },
 
   attachToParent: function () {
@@ -76,5 +73,9 @@ NailPolish.View = Backbone.View.extend({
   partials: function () {
     // override with own partials if necessary
     return {};
+  },
+
+  removeSelf: function() {
+    Backbone.View.prototype.remove.apply(this);
   }
-});
+}));

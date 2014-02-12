@@ -34,6 +34,12 @@ describe("NailPolish.Router", function() {
       router.page();
       expect(NailPolish.Events.publish).toHaveBeenCalledWith('page:new');
     });
+
+    it('calls remove on itself', function() {
+      spyOn(router, 'remove')
+      router.page();
+      expect(router.remove).toHaveBeenCalled();
+    })
   });
 
   describe("render", function() {
