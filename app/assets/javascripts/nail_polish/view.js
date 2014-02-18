@@ -67,6 +67,7 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   presenter: function () {
     var presented = this.model || this.collection || {};
     var presenter = new (this.presenterClass())(presented);
+    presenter.repository = presenter.repository || this.repository;
     return presenter.toJSON();
   },
 

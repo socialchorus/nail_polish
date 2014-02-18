@@ -186,6 +186,18 @@ describe("NailPolish.View", function () {
       expect(MyPresenter.prototype.initialize.calls.mostRecent().args[0]).toEqual(collection);
     });
 
+    it('adds the repository to the presenter', function() {
+      MyPresenter = function() {};
+      MyPresenter.prototype.toJSON = function() {
+        return this.repository;
+      };
+
+      view = new ViewClass();
+      view.repository = {do: 'it'};
+
+      expect(view.presenter()).toEqual(view.repository);
+    });
+
     it('calls toJSON on the presenter and returns it', function () {
       view = new ViewClass();
       expect(view.presenter()).toEqual('myJSON');
