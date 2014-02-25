@@ -20,6 +20,38 @@ describe("NailPolish.View", function () {
     expect(view instanceof Backbone.View).toBe(true);
   });
 
+  describe('initialization', function() {
+    beforeEach(function() {
+      ViewClass = NailPolish.View.extend();
+    });
+
+    it('will store the parent if given', function() {
+      view = new ViewClass({parent: 'body'});
+      expect(view.parent).toBe('body');
+    });
+
+    it('will store the attachmentMethod if given', function() {
+      view = new ViewClass({attachmentMethod: 'prepend'});
+      expect(view.attachmentMethod).toBe('prepend');
+    });
+
+    it('will store the parentSelector if given', function() {
+      view = new ViewClass({parentSelector: '#foo'});
+      expect(view.parentSelector).toBe('#foo');
+    });
+
+    it('will store the templateName if given',  function() {
+      view = new ViewClass({templateName: 'template'});
+      expect(view.templateName).toBe('template');
+    });
+
+    it('will put the presenterClass in a closure if given', function() {
+      var PresenterClass = NailPolish.Presenter.extend();
+      view = new ViewClass({presenterClass: PresenterClass});
+      expect(view.presenterClass()).toBe(PresenterClass);
+    })
+  });
+
   describe("rendering", function () {
     beforeEach(function () {
       view = new ViewClass();

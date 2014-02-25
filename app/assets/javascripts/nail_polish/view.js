@@ -8,7 +8,14 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
     opts = opts || {};
     this.parent = (this.parent && $(this.parent)) || opts.parent;
     this.repository = opts.repository;
-    this.attachmentMethod = this.attachmentMethod || 'append';
+    this.attachmentMethod = opts.attachmentMethod || this.attachmentMethod || 'append';
+    this.parentSelector = opts.parentSelector || this.parentSelector;
+    this.templateName = opts.templateName || this.templateName;
+    if (opts.presenterClass) {
+      this.presenterClass = function() {
+        return opts.presenterClass;
+      };
+    }
     this.init(opts);
   },
 
