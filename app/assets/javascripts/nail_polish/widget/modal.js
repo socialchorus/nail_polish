@@ -31,9 +31,12 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   },
 
   close: function (e) {
+    if(e){
+      e.preventDefault(); // This is necessary to prevent clicking on elements behind the modal
+    }
     NailPolish.Events.unsubscribe('page:new', this.close, this);
     this.remove();
-    this.onClose()
+    this.onClose();
   },
 
   onClose: function() {} // to be implemented by subclasses
