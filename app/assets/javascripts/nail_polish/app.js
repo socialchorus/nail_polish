@@ -25,7 +25,11 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
   },
 
   bootstrapData: function(selector) {
-    return JSON.parse($(selector).text());
+    try {
+      return JSON.parse($(selector).text());
+    } catch(e) {
+      return {};
+    }
   },
 
   //Stuff for YOU to configure
@@ -34,7 +38,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
     //your init stuff here
   },
 
-  bootstrapDataSelector: "#bootstrap-data",
+  bootstrapDataSelector: "#bootstrap-json",
 
   bootstrap: function() {
     //override this if you want specific models in your repo
