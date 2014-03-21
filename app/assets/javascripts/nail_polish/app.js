@@ -24,6 +24,8 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
   },
 
   render: function() {
+    this.$el = this.parent; // will act like a view when the parent finder encounters it
+    // TODO: switch naming to el/$el everywhere???
     this.renderEach(this.subviews());
   },
 
