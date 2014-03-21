@@ -1,8 +1,7 @@
-//specs to come
 NailPolish.App = function() {};
 NailPolish.App.extend = Backbone.Model.extend;
 
-_.extend(NailPolish.App.prototype, {
+_.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), {
   initialize: function(parent, opts) {
     this.parent = parent;
     this.opts = opts;
@@ -22,15 +21,11 @@ _.extend(NailPolish.App.prototype, {
   },
 
   render: function() {
-    _.each(this.subViews(), function(view) {
-      view.parent = view.parent || this.parent;
-      view.render();
-    }.bind(this));
+    this.renderEach(this.subViews());
   },
 
-  bootstrapData: function() {
-    var data = data || JSON.parse($('#bootstrap-json').text());
-    return data;
+  bootstrapData: function(selector) {
+    return JSON.parse($(selector).text());
   },
 
   //Stuff for YOU to configure
@@ -39,9 +34,11 @@ _.extend(NailPolish.App.prototype, {
     //your init stuff here
   },
 
+  bootstrapDataSelector: "#bootstrap-data",
+
   bootstrap: function() {
     //override this if you want specific models in your repo
-    return this.bootstrapData();
+    return this.bootstrapData(this.bootstrapDataSelector);
   },
 
   subViews: function() {
@@ -52,7 +49,7 @@ _.extend(NailPolish.App.prototype, {
    //]
   },
 
-  routerClass: function () {
+  routerClass: function() {
     //set this, yo
   }
-});
+}));
