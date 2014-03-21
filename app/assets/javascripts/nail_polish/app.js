@@ -1,4 +1,7 @@
-NailPolish.App = function() {};
+NailPolish.App = function(parent, opts) {
+  this.initialize(parent, opts);
+};
+
 NailPolish.App.extend = Backbone.Model.extend;
 
 _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), {

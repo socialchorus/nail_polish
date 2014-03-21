@@ -5,6 +5,19 @@ describe('NailPolish.App', function() {
     spyOn(Backbone.history, 'start');
   });
 
+  describe('initializing an app', function() {
+    beforeEach(function() {
+      NewApp = NailPolish.App.extend();
+    });
+
+    it('it calls init', function() {
+      var parent, opts;
+      spyOn(NewApp.prototype, 'init');
+      app = new NewApp(parent, opts);
+      expect(NewApp.prototype.init).toHaveBeenCalledWith(parent, opts)
+    });
+  });
+
   describe('bootstrapping data', function() {
     var $bootstrapData;
 
