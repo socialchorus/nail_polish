@@ -1,6 +1,6 @@
 NailPolish.Router = Backbone.Router.extend(_.extend(_.clone(NailPolish.SubviewManager), {
-  initialize: function ($layout) {
-    this.$layout = $layout;
+  initialize: function ($el) {
+    this.$el = $el;
     this.history = [];
     this.on('route:start', this.storeHistory, this);
 
@@ -45,7 +45,7 @@ NailPolish.Router = Backbone.Router.extend(_.extend(_.clone(NailPolish.SubviewMa
   page: function (views) {
     NailPolish.Events.publish('page:new');
     this.remove();
-    this.$layout.empty();
+    this.$el.empty();
     this.render(views);
   },
 
@@ -55,7 +55,7 @@ NailPolish.Router = Backbone.Router.extend(_.extend(_.clone(NailPolish.SubviewMa
   },
 
   defaultParent: function() {
-    return this.$layout;
+    return this.$el;
   },
 
   afterRender: function(){
