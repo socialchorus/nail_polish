@@ -73,23 +73,23 @@ describe('NailPolish.App', function() {
   });
 
   describe('rendering views', function() {
-    var subViewOne, subViewTwo, subViewThree;
+    var subviewOne, subviewTwo, subviewThree;
     
     beforeEach(function() {
-      subViewOne = new NailPolish.View();
-      subViewTwo = new NailPolish.View();
-      subViewThree = new NailPolish.View();
+      subviewOne = new NailPolish.View();
+      subviewTwo = new NailPolish.View();
+      subviewThree = new NailPolish.View();
 
-      spyOn(subViewOne, 'render');
-      spyOn(subViewTwo, 'render');
-      spyOn(subViewThree, 'render');
+      spyOn(subviewOne, 'render');
+      spyOn(subviewTwo, 'render');
+      spyOn(subviewThree, 'render');
 
       NewApp = NailPolish.App.extend({
-        subViews: function() {
+        subviews: function() {
           return [
-            subViewOne,
-            subViewTwo,
-            subViewThree
+            subviewOne,
+            subviewTwo,
+            subviewThree
           ];
         }
       });
@@ -100,9 +100,9 @@ describe('NailPolish.App', function() {
     });
 
     it('should call render for each subview', function() {
-      expect(subViewOne.render).toHaveBeenCalled();
-      expect(subViewTwo.render).toHaveBeenCalled();
-      expect(subViewThree.render).toHaveBeenCalled();
+      expect(subviewOne.render).toHaveBeenCalled();
+      expect(subviewTwo.render).toHaveBeenCalled();
+      expect(subviewThree.render).toHaveBeenCalled();
     });
   });
 });

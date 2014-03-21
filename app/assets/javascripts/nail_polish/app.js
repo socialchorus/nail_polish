@@ -24,7 +24,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
   },
 
   render: function() {
-    this.renderEach(this.subViews());
+    this.renderEach(this.subviews());
   },
 
   bootstrapData: function(selector) {
@@ -48,7 +48,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
     return this.bootstrapData(this.bootstrapDataSelector);
   },
 
-  subViews: function() {
+  subviews: function() {
    //fill me in
 
    //return [
