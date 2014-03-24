@@ -14,7 +14,7 @@ describe('NailPolish.App', function() {
       var parent, opts;
       spyOn(NewApp.prototype, 'init');
       app = new NewApp(parent, opts);
-      expect(NewApp.prototype.init).toHaveBeenCalledWith(parent, opts)
+      expect(NewApp.prototype.init).toHaveBeenCalledWith(parent, opts);
     });
   });
 
@@ -25,12 +25,12 @@ describe('NailPolish.App', function() {
       NewApp = NailPolish.App.extend({
         bootstrapDataSelector: '#my-data'
       });
-      
+
       app = new NewApp();
 
       $bootstrapData = $(
-      "  <div id='my-data'>" + 
-      "    {\"program_id\":1,\"program\":{\"id\":1,\"name\":\"a name\"}}" + 
+      "  <div id='my-data'>" +
+      "    {\"program_id\":1,\"program\":{\"id\":1,\"name\":\"a name\"}}" +
       "  </div>"
       );
 
@@ -74,7 +74,7 @@ describe('NailPolish.App', function() {
 
   describe('rendering views', function() {
     var subviewOne, subviewTwo, subviewThree;
-    
+
     beforeEach(function() {
       subviewOne = new NailPolish.View();
       subviewTwo = new NailPolish.View();
