@@ -9,7 +9,7 @@ describe("NailPolish.Widget.Dropdown", function(){
         '</div>' +
         '<span class="caret"></span>' +
       '</div>'+
-      '<ul class="dropdown-menu l-hidden">' +
+      '<ul class="dropdown-menu hidden">' +
         '{{#selectable_items}}'+
           '<li class="menu-item" data-option={{key}}>{{value}}</li>' +
         '{{/selectable_items}}' +
@@ -22,7 +22,7 @@ describe("NailPolish.Widget.Dropdown", function(){
       templateName: 'dropdown',
       selectedOption: '#search-channel',
       menuSelector: '.dropdown-menu',
-      hiddenClass: 'l-hidden',
+      hiddenClass: 'hidden',
       parentSelector: '#jasmine_content'
     });
 

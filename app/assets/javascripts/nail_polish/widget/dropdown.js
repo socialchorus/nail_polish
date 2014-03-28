@@ -6,7 +6,7 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     'click .menu-item': 'setSelected'
   },
 
-  hiddenClass: 'l-hidden',
+  hiddenClass: 'hidden',
 
   init: function(){
     this.className      = this.model.get('name') + '-drop-down';
