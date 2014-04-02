@@ -77,4 +77,9 @@ div.button {
   &.small {
     @include small-text;
   }
+
+  &.thin {
+    @include small-text;
+    padding: $spacing*0.6 $spacing*2.2;
+  }
 }
