@@ -95,6 +95,10 @@ form {
       padding-top: 3px;
     }
 
+    .bordered{
+      border: 1px solid $error-color;
+    }
+
     input[type=text],
     input[type=password],
     input[type=email],
