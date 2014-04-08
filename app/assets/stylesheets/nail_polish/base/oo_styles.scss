@@ -6,6 +6,10 @@
   overflow: visible;
 }
 
+.hidden-overflow {
+  overflow: hidden;
+}
+
 .rounded {
   @include rounded;
 }
