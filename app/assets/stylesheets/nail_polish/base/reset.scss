@@ -47,6 +47,11 @@ input, textarea, button {
   background-color: transparent;
   -webkit-appearance: none;
 }
+
+input[type="radio"] {
+ -webkit-appearance: radio;
+}
+
 img {
   display: block;
 }
