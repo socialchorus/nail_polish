@@ -18,6 +18,7 @@
 //= require nail_polish/presenter
 //= require_tree ./nail_polish/presenters
 //= require_tree ./nail_polish/models
+//= require_tree ./nail_polish/views
 //= require nail_polish/router
 //= require nail_polish/app
 
