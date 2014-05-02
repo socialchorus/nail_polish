@@ -17,8 +17,31 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     return NailPolish.Presenter.Dropdown;
   },
 
-  toggle: function() {
-    $(this.menuSelector).toggleClass(this.hiddenClass);
+  toggle: function(e) {
+    if (this.menuIsVisible()) {
+      this.hideMenu.bind(this)();
+    } else {
+      this.showMenu();
+      e.stopPropagation();
+    }
+  },
+
+  menuIsVisible: function() {
+    return this.$(this.menuSelector).is(':visible');
+  },
+
+  hideMenu: function() {
+    $(this.menuSelector).addClass(this.hiddenClass);
+    this.removeBodyListener();
+  },
+
+  showMenu: function() {
+    $(this.menuSelector).removeClass(this.hiddenClass);
+    $('body').on(NailPolish.Events.click, this.hideMenu.bind(this));
+  },
+
+  removeBodyListener: function() {
+    $('body').off(NailPolish.Events.click, this.hideMenu.bind(this));
   },
 
   renderTemplate: function () {
