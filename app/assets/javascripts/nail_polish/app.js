@@ -6,7 +6,8 @@ NailPolish.App.extend = Backbone.Model.extend;
 
 _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), {
   initialize: function(parent, opts) {
-    this.parent = parent;
+    this.$el = parent; // will act like a view when the parent finder encounters it
+    // TODO: switch naming to el/$el everywhere???
     this.opts = opts;
     this.init(parent, opts);
   },
@@ -18,14 +19,12 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
   },
 
   route: function() {
-    this.router = new (this.routerClass())();
+    this.router = new (this.routerClass(this.$el))();
     this.router.repository = this.repository;
     Backbone.history.start();
   },
 
   render: function() {
-    this.$el = this.parent; // will act like a view when the parent finder encounters it
-    // TODO: switch naming to el/$el everywhere???
     this.renderEach(this.subviews());
     this.afterRender();
   },
