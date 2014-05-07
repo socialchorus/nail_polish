@@ -25,6 +25,7 @@ NailPolish.AuthTokenAdder.prototype.handleDelete = function () {
 };
 
 NailPolish.AuthTokenAdder.prototype.handlePostPutPatch = function () {
+  debugger;
   if ( this.type != 'post' && this.type != 'put' && this.type != 'patch' ) { return; }
 
   if ( _.isString(this.data) ) {

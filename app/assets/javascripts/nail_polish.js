@@ -13,6 +13,7 @@
 //= require nail_polish/events
 //= require nail_polish/events/redirector
 //= require nail_polish/events/flasher
+//= require nail_polish/model
 //= require nail_polish/view
 //= require nail_polish/view/parent_finder
 //= require nail_polish/presenter

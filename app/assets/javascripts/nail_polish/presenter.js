@@ -35,9 +35,24 @@ NailPolish.Presenter.prototype.inclusionFor = function (attr) {
   return _.isFunction(prop) ? prop.bind(this)() : prop;
 };
 
+NailPolish.Presenter.prototype.errors = function() {
+  var errors = {};
+  if (this.presented.errors === undefined) {
+    return errors;
+  }
+
+  _.each(this.presented.errors, function(field, error) {
+    errors[field + "_error"] = error;
+  });
+
+  return errors;
+};
+
 NailPolish.Presenter.prototype.toJSON = function() {
   var base = this.presentedToJSON();
   var inclusions = this.inclusions();
-  return _.extend(base, inclusions);
+  var errors = this.errors();
+
+  return _.extend(base, inclusions, errors);
 };
 
