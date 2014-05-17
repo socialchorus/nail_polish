@@ -7,7 +7,7 @@ describe("NailPolish.Presenter", function() {
         presenter = new NailPolish.Presenter();
       });
 
-      it("toJSON retruns an empty object", function() {
+      it("toJSON returns an empty object", function() {
         expect(presenter.toJSON()).toEqual({});
       });
     });
@@ -45,14 +45,7 @@ describe("NailPolish.Presenter", function() {
   });
 
   describe('extendability', function () {
-    var PresenterClass, presenter;
-
     beforeEach(function() {
-      PresenterClass = NailPolish.Presenter.extend({
-        nail_polish: function() {
-          return 'SocialCoder OO FrontEnd';
-        }
-      });
       spyOn(NailPolish.Presenter.prototype, 'init');
       spyOn(NailPolish.Presenter.prototype, 'initialize');
     });
@@ -65,11 +58,6 @@ describe("NailPolish.Presenter", function() {
     it('calls init on initialize', function() {
       new NailPolish.Presenter();
       expect(NailPolish.Presenter.prototype.initialize).toHaveBeenCalled();
-    });
-
-    it("gets it from Backbone", function() {
-      presenter = new PresenterClass();
-      expect(presenter.nail_polish()).toBe('SocialCoder OO FrontEnd');
     });
   });
 
