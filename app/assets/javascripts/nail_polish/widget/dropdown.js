@@ -3,7 +3,8 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
 
   events: {
     'click .dropdown-toggle': 'toggle',
-    'click .menu-item': 'setSelected'
+    'click .menu-item': 'setSelected',
+    'click .dropdown-menu': 'stopPropagation'
   },
 
   hiddenClass: 'hidden',
@@ -56,6 +57,10 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
     this.model.set('selected_key', $target.attr("data-option"));
     this.render();
     this.afterSelect();
+  },
+
+  stopPropagation: function(e) {
+    e.stopPropagation();
   },
 
   afterSelect: function() {
