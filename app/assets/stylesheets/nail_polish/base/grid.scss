@@ -35,6 +35,10 @@
   &.half {
     padding: $spacing * 0.7;
   }
+
+  &.double {
+    padding: $spacing * 2;
+  }
 }
 
 .spacer {
@@ -50,4 +54,3 @@
 .s-hidden {
   display: none;
 }
-
