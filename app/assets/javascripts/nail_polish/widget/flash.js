@@ -3,7 +3,7 @@ NailPolish.Widget.Flash = NailPolish.View.extend({
   className: 'flash',
   parentSelector: '#flash-container',
   attachmentMethod: 'html',
-  animationLength: 500,
+  animationLength: 1000,
   showFor: 2000,
 
   addListeners: {
@@ -21,16 +21,17 @@ NailPolish.Widget.Flash = NailPolish.View.extend({
 
   show: function () {
     window.scrollTo(0, 0);
-    this.$el.css('opacity', 0);
     this.$el.show();
-    this.$el.animate({opacity: 1}, this.animationLength);
-
+    this.$el.find('.flash').css('opacity', 1);
     setTimeout(this.hide.bind(this), this.showFor);
   },
 
   hide: function () {
-    this.$el.animate(
-      {opacity: 0}, this.animationLength, this.$el.hide.bind(this.$el)
-    );
+    this.$el.find('.flash').css('opacity', 0);
+    setTimeout(this.removeFlash.bind(this), this.animationLength);
+  },
+
+  removeFlash: function() {
+    this.$el.hide();
   }
 });

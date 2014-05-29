@@ -23,10 +23,18 @@ describe("NailPolish.Widget.Flash", function() {
       expect(window.scrollTo).toHaveBeenCalledWith(0,0);
     });
 
-    xit("shows the el");
-  });
+    it("shows the el", function () {
+      spyOn(flash.$el, 'show');
+      flash.perform();
+      expect(flash.$el.show).toHaveBeenCalled();
+    });
 
-  describe("close button", function() {
-    xit("calls close");
+    it("hides the el after animation length plus showFor length", function () {
+      spyOn(flash.$el, 'hide');
+      jasmine.clock().install();
+      flash.perform();
+      jasmine.clock().tick(flash.animationLength + flash.showFor);
+      expect(flash.$el.hide).toHaveBeenCalled();
+    });
   });
 });
