@@ -14,8 +14,8 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
 
   start: function () {
     this.repository = this.buildRepository();
-    this.route();
     this.render();
+    this.route();
   },
 
   route: function() {
