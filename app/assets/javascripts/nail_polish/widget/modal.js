@@ -13,7 +13,7 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   renderTemplate: function () {
     // switch declared template into a partial for consistent usage
-    var template = HoganTemplates['modal'];
+    var template = HoganTemplates['nail_polish/templates/modal'];
     var partials = _.extend(this.partials(), {
       modal_content: HoganTemplates[this.templateName]
     });
@@ -41,4 +41,3 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   onClose: function() {} // to be implemented by subclasses
 });
-
