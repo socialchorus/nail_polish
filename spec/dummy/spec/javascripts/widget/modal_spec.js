@@ -2,7 +2,7 @@ describe("NailPolish.Widget.Modal", function() {
   var view, e;
 
   beforeEach(function() {
-    HoganTemplates['modal'] = Hogan.compile(
+    HoganTemplates['nail_polish/templates/modal'] = Hogan.compile(
       "<div id=\"overlay\"><div class='modal'>{{> modal_content}}</div></div>"
     );
 
@@ -70,7 +70,7 @@ describe("NailPolish.Widget.Modal", function() {
     it('closes when it hears a page:new event', function() {
       spyOn(view, 'close');
       view.render();
-      
+
       NailPolish.Events.publish('page:new');
       expect(view.close).toHaveBeenCalled();
     });
