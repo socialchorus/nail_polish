@@ -1,4 +1,5 @@
 NailPolish.Widget.Modal = NailPolish.View.extend({
+  parent: 'body',
   parentSelector: '#overlay-container',
   attachmentMethod: 'html',
 
