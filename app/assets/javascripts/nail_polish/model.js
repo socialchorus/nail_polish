@@ -31,10 +31,19 @@ NailPolish.Model = Backbone.Model.extend({
   },
 
   _populateServerErrors: function(model, response, options) {
-    if (response.responseJSON && response.responseJSON.errors) {
-      var errors = response.responseJSON.errors
+    var errors = this._errors(response);
+    if (errors) {
       model.validationError = errors;
       model.trigger('invalid', model, errors, _.extend(options, { validationError: errors }));
+    }
+  },
+
+  _errors: function (response) {
+    var errors;
+    try {
+      return JSON.parse(response.responseText).errors;
+    } catch(e) {
+      return;
     }
   }
 });

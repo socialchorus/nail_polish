@@ -1,4 +1,12 @@
 describe("NailPolish.Model", function() {
+  var jsonErrorResponse;
+
+  beforeEach(function () {
+    jsonErrorResponse = {
+      responseText: JSON.stringify({ errors: { foo: ["bar"] } })
+    };
+  });
+
   it("is a Backbone.Model still", function() {
     expect(new NailPolish.Model() instanceof Backbone.Model).toBeTruthy();
   });
@@ -12,17 +20,6 @@ describe("NailPolish.Model", function() {
     });
 
     describe("when there were server errors", function() {
-      var jsonErrorResponse;
-
-      beforeEach(function () {
-        jsonErrorResponse = {
-          responseJSON: {
-            errors: {
-              foo: ["bar"]
-            }
-          }
-        };
-      });
 
       it("populates validationError with server errors", function() {
         model.trigger('error', model, jsonErrorResponse, {});
@@ -50,7 +47,7 @@ describe("NailPolish.Model", function() {
 
     it("does not populate errors if there were none", function() {
       model.trigger('error', model, {
-        responseJSON: {}
+        responseText: JSON.stringify({})
       }, {});
       expect(model.validationError).toEqual(null);
     });
@@ -67,13 +64,7 @@ describe("NailPolish.Model", function() {
         initialize: function() {}
       });
       var model = new MyModel();
-      model.trigger('error', model, {
-        responseJSON: {
-          errors: {
-            foo: ["bar"]
-          }
-        }
-      }, {});
+      model.trigger('error', model, jsonErrorResponse, {});
       expect(model.validationError).toEqual({ foo: ["bar"] });
     });
   });
