@@ -39,7 +39,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
 
   bootstrapData: function(selector) {
     try {
-      return JSON.parse($(selector).text());
+      return JSON.parse($(selector).html());
     } catch(e) {
       return {};
     }
