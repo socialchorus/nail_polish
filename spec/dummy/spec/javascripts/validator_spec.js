@@ -162,6 +162,11 @@ describe("NailPolish.Validator", function() {
         expect(validate.validate({ "password": null })).toBeUndefined();
         expect(validate.validate({ "password": /das_regexp/ })).toBeUndefined();
       });
+
+      it("ignores empty strings", function() {
+        expect(validate.validate({ "password": "" })).
+          toBeUndefined();
+      });
     });
 
     describe("tooLong", function() {
@@ -184,6 +189,11 @@ describe("NailPolish.Validator", function() {
         expect(validate.validate({ "password": undefined })).toBeUndefined();
         expect(validate.validate({ "password": null })).toBeUndefined();
         expect(validate.validate({ "password": /das_regexp/ })).toBeUndefined();
+      });
+
+      it("ignores empty strings", function() {
+        expect(validate.validate({ "password": "" })).
+          toBeUndefined();
       });
     });
 
@@ -211,6 +221,11 @@ describe("NailPolish.Validator", function() {
 
       it("ignores undefined values", function() {
         expect(validate.validate({ "shortkey": undefined })).
+          toBeUndefined();
+      });
+
+      it("ignores empty strings", function() {
+        expect(validate.validate({ "shortkey": "" })).
           toBeUndefined();
       });
     });

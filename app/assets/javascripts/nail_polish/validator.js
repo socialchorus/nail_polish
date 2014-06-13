@@ -78,23 +78,29 @@ NailPolish.Validator.prototype.validate = function(attributes) {
       attribute("username").
       addRule("must not contain whitespace", validate.is.whitespaceFree());
 */
-NailPolish.Validator.prototype.is = {
-  required: function() {
-    return function(value) { return null == value || "" === value; };
-  },
+(function() {
+  var notEmpty = function(value) {
+    return null != value && "" !== value;
+  };
 
-  tooShort: function(minLength) {
-    return function(value) { return null != value && value.length < minLength; };
-  },
+  NailPolish.Validator.prototype.is = {
+    required: function() {
+      return function(value) { return !notEmpty(value); };
+    },
 
-  tooLong: function(maxLength) {
-    return function(value) { return null != value && value.length > maxLength; };
-  },
+    tooShort: function(minLength) {
+      return function(value) { return notEmpty(value) && value.length < minLength; };
+    },
 
-  notMatching: function(pattern) {
-    return function(value) { return null != value && !String(value).match(pattern); }
-  }
-};
+    tooLong: function(maxLength) {
+      return function(value) { return notEmpty(value) && value.length > maxLength; };
+    },
+
+    notMatching: function(pattern) {
+      return function(value) { return notEmpty(value) && !String(value).match(pattern); }
+    }
+  };
+})();
 
 NailPolish.Validator.RuleSet = function() {
   this._rules = [];
