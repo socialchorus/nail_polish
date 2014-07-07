@@ -3,7 +3,8 @@ body {
 }
 
 #overlay {
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
   top: 0;
   bottom: 0;
   left: 0;

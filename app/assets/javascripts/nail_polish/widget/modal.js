@@ -31,7 +31,7 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   render: function() {
     NailPolish.View.prototype.render.apply(this);
-    this.setOverlayHeight();
+    this.freezeBody();
     this.addListenerForClose();
     this.setPosition();
   },
@@ -52,18 +52,20 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   onClose: function() {}, // to be implemented by subclasses
 
-  position: function() {
-    return document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+  windowHeight: function () {
+    return $(window).height();
   },
 
   setPosition: function () {
-    var finalHeight = this.position() + 200;
-    this.$('.modal').css('top', finalHeight+'px');
+    var $modal = this.$('.modal');
+
+    if ($modal.height()+100 < this.windowHeight() ){
+      $modal.css('top', '100px');
+    }
   },
 
-  setOverlayHeight: function() {
+  freezeBody: function() {
     setTimeout( function() {
-      this.$("#overlay").height($(document).height());
       $('body').addClass('no-scroll');
     }, 0);
   }

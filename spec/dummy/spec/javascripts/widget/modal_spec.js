@@ -23,7 +23,7 @@ describe("NailPolish.Widget.Modal", function() {
   describe("render", function() {
     beforeEach(function () {
       spyOn(view, 'setPosition');
-      spyOn(view, 'setOverlayHeight');
+      spyOn(view, 'freezeBody');
     });
 
     it("wraps the declared template in a modal template", function() {
@@ -38,7 +38,7 @@ describe("NailPolish.Widget.Modal", function() {
 
     it("sets the overlay height to the full height of the window", function () {
       view.render();
-      expect(view.setOverlayHeight).toHaveBeenCalled();
+      expect(view.freezeBody).toHaveBeenCalled();
     });
   });
 
@@ -102,10 +102,20 @@ describe("NailPolish.Widget.Modal", function() {
   });
 
   describe("setPosition", function () {
-    it("set the position of the modal relative to the window position", function () {
-      spyOn(view, 'position').and.returnValue(400);
-      view.render();
-      expect(view.$('.modal').css('top')).toBe('600px');
+    describe("the window is bigger than the modal", function () {
+      it("set the position of the modal relative to the window position", function () {
+        spyOn(view, 'windowHeight').and.returnValue(1000);
+        view.render();
+        expect(view.$('.modal').css('top')).toBe('100px');
+      });
+    });
+
+    describe("the window is smaller than the modal", function () {
+      it("sets the position of the modal to top", function () {
+        spyOn(view, 'windowHeight').and.returnValue(1);
+        view.render();
+        expect(view.$('.modal').css('top')).toBe('');
+      });
     });
   });
 
