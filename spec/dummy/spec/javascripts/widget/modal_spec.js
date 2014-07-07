@@ -21,9 +21,24 @@ describe("NailPolish.Widget.Modal", function() {
   });
 
   describe("render", function() {
+    beforeEach(function () {
+      spyOn(view, 'setPosition');
+      spyOn(view, 'setOverlayHeight');
+    });
+
     it("wraps the declared template in a modal template", function() {
       view.render();
       expect(view.$('#overlay .modal .here-it-is').length).toBe(1);
+    });
+
+    it("sets position of modal to current position on page", function () {
+      view.render();
+      expect(view.setPosition).toHaveBeenCalled();
+    });
+
+    it("sets the overlay height to the full height of the window", function () {
+      view.render();
+      expect(view.setOverlayHeight).toHaveBeenCalled();
     });
   });
 
@@ -34,6 +49,10 @@ describe("NailPolish.Widget.Modal", function() {
 
     it("adds listening for .cancel-link", function() {
       expect(view.events()['click .cancel-link a']).toEqual('close');
+    });
+
+    it("adds listening for #overlay", function() {
+      expect(view.events()['click #overlay']).toEqual('verifyTargetAndClose');
     });
 
     it("listens to events in addListeners", function() {
@@ -64,6 +83,12 @@ describe("NailPolish.Widget.Modal", function() {
       view.close(e);
       expect(view.onClose).toHaveBeenCalled();
     });
+
+    it("removes 'no-scroll' from the body", function () {
+      $('body').addClass('no-scroll');
+      view.close();
+      expect($('body').hasClass('no-scroll')).toBeFalsy();
+    });
   });
 
   describe('listening for global events', function() {
@@ -72,6 +97,23 @@ describe("NailPolish.Widget.Modal", function() {
       view.render();
 
       NailPolish.Events.publish('page:new');
+      expect(view.close).toHaveBeenCalled();
+    });
+  });
+
+  describe("setPosition", function () {
+    it("set the position of the modal relative to the window position", function () {
+      spyOn(view, 'position').and.returnValue(400);
+      view.render();
+      expect(view.$('.modal').css('top')).toBe('600px');
+    });
+  });
+
+  describe("verifyTargetAndClose", function () {
+    it("closes the modal/overlay if the target was just the overlay (clicked outside the modal)", function () {
+      spyOn(view, 'close');
+      view.render();
+      view.verifyTargetAndClose({target: view.$('#overlay')})
       expect(view.close).toHaveBeenCalled();
     });
   });

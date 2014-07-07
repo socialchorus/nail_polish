@@ -10,6 +10,10 @@
   overflow: hidden;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .rounded {
   @include rounded;
 }

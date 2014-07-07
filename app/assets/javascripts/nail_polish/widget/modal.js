@@ -6,10 +6,17 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   events: function () {
     _.extend(this.addListeners, {
       'click .close-modal': 'close',
-      'click .cancel-link a': 'close'
+      'click .cancel-link a': 'close',
+      'click #overlay': 'verifyTargetAndClose'
     });
 
     return NailPolish.View.prototype.events.apply(this);
+  },
+
+  verifyTargetAndClose: function (e) {
+    if($(e.target).is('#overlay')) {
+      this.close();
+    }
   },
 
   renderTemplate: function () {
@@ -24,7 +31,9 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   render: function() {
     NailPolish.View.prototype.render.apply(this);
+    this.setOverlayHeight();
     this.addListenerForClose();
+    this.setPosition();
   },
 
   addListenerForClose: function() {
@@ -36,9 +45,26 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
       e.preventDefault(); // This is necessary to prevent clicking on elements behind the modal
     }
     NailPolish.Events.unsubscribe('page:new', this.close, this);
+    $('body').removeClass('no-scroll');
     this.remove();
     this.onClose();
   },
 
-  onClose: function() {} // to be implemented by subclasses
+  onClose: function() {}, // to be implemented by subclasses
+
+  position: function() {
+    return document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset;
+  },
+
+  setPosition: function () {
+    var finalHeight = this.position() + 200;
+    this.$('.modal').css('top', finalHeight+'px');
+  },
+
+  setOverlayHeight: function() {
+    setTimeout( function() {
+      this.$("#overlay").height($(document).height());
+      $('body').addClass('no-scroll');
+    }, 0);
+  }
 });
