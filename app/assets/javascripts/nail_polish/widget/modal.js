@@ -65,8 +65,6 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   },
 
   freezeBody: function() {
-    setTimeout( function() {
-      $('body').addClass('no-scroll');
-    }, 0);
+    $('body').addClass('no-scroll');
   }
 });
