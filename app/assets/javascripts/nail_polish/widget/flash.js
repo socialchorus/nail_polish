@@ -20,7 +20,6 @@ NailPolish.Widget.Flash = NailPolish.View.extend({
   },
 
   show: function () {
-    window.scrollTo(0, 0);
     this.$el.show();
     this.$el.find('.flash').css('opacity', 1);
     setTimeout(this.hide.bind(this), this.showFor);

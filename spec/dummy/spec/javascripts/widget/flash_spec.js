@@ -17,12 +17,6 @@ describe("NailPolish.Widget.Flash", function() {
       expect(flash.render).toHaveBeenCalled();
     });
 
-    it("scrolls to the top", function() {
-      spyOn(window, 'scrollTo');
-      flash.perform();
-      expect(window.scrollTo).toHaveBeenCalledWith(0,0);
-    });
-
     it("shows the el", function () {
       spyOn(flash.$el, 'show');
       flash.perform();
