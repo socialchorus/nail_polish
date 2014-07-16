@@ -11,11 +11,13 @@ _.extend(NailPolish.GlobalPublisherAdder.prototype, {
   wrapComplete: function (callback) {
     return function(xhr, status) {
       // call the original callback
-      callback && callback(xhr, status);
+      if (callback) {
+        callback(xhr, status);
+      }
 
       // extract the JSON data
-      
-      response = xhr.response || "{}"
+
+      response = xhr.response || xhr.responseText || "{}"
       var data = JSON.parse(response);
       var publisher = NailPolish.Events;
 
