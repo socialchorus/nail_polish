@@ -17,7 +17,7 @@ _.extend(NailPolish.GlobalPublisherAdder.prototype, {
 
       // extract the JSON data
 
-      response = xhr.response || xhr.responseText || "{}"
+      response = xhr.response || xhr.responseText || "{}";
       var data = JSON.parse(response);
       var publisher = NailPolish.Events;
 
