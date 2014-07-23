@@ -1,7 +1,11 @@
+@mixin standard-panel {
+  @include bordered;
+  @include border-radius($border-radius-size);
+}
+
 .panel {
   background-color: $light-color;
-  @include border-radius($border-radius-size);
-  @include bordered;
+  @include standard-panel;
   @include box-shadow(3px 3px 0 rgba(0,0,0,0.07));
 }
 
@@ -12,4 +16,10 @@
   &.lightest {
     background-color: $light-color;
   }
+}
+
+.disabled-panel {
+  background-color: opacify($neutral-superlight-color, 0);
+  @include standard-panel;
+  opacity: 0.5;
 }
