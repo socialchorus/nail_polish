@@ -63,10 +63,13 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   },
 
   renderTemplate: function () {
-    var template = HoganTemplates[this.templateName];
+    var templateName = _.isFunction(this.templateName) ? this.templateName() : this.templateName;
+
+    var template = HoganTemplates[templateName];
     if (!template) {
       return;
     }
+
     var rendered = template.render(this.presenter(), this.partials());
     this.$el.html(rendered);
   },

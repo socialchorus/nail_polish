@@ -62,6 +62,31 @@ describe("NailPolish.View", function () {
         view.render();
       });
 
+      describe('when the template name is a function', function () {
+        beforeEach(function(){
+          view = new ViewClass({
+            className: 'test-class',
+            templateName: function(){ return 'something'}
+            })
+
+          HoganTemplates['something'] = {
+            render: function () {
+              return "<div class='test-class-inner'></div>";
+            }
+          };
+        })
+
+        it('renders via Backbone with the right class', function () {
+          expect($(view.el).attr('class')).toBe('test-class');
+        });
+
+
+        it('renders the related Hogan template', function () {
+          view.render();
+          expect(view.$('.test-class-inner').length).toBe(1);
+        });
+      });
+
       describe('there is no template specified', function () {
         beforeEach(function () {
           HoganTemplates['view_class'] = undefined;
