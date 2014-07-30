@@ -31,6 +31,10 @@
 .inner {
   padding: $spacing;
   @include line;
+
+  &.half {
+    padding: $spacing / 2;
+  }
 }
 
 .spacer {
