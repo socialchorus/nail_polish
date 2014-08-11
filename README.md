@@ -37,13 +37,7 @@ MyApp = {
 }
 ```
 
-This allows you to write:
-
-```MyApp.Models.Admin```
-
-without throwing the error:
-
-```Cannot read property ‘Admin’ of undefined.```
+This allows you to write: "MyApp.Models.Admin" without throwing the error: "Cannot read property ‘Admin’ of undefined."
 
 ### Init/Initialize
 
@@ -118,7 +112,9 @@ NailPolish views and models inherit from Backbone. Backbone views handle templat
 
 To create a new view, extend the NailPolish view like so:
 
-```App.Views.Something = NailPolish.View.extend({})```
+```
+App.Views.Something = NailPolish.View.extend({})
+```
 
 and add these several items:
 
@@ -154,7 +150,9 @@ NailPolish.Presenter = function(presented) {
 
 The way to get the “presented” data from the presenter is to call:
 
-```this.presented.get(‘attribute’)```
+```
+this.presented.get(‘attribute’)
+```
 
 ## OOCSS
 
@@ -168,7 +166,9 @@ One of the first folders you’ll want to explore is the app/assets/stylesheets/
 
 These are all set in variable names, allowing them to be reused throughout your app:
 
-```$neutral-superlight-color: #eee;```
+```
+$neutral-superlight-color: #eee;
+```
 
 Variables
 
@@ -233,7 +233,9 @@ validate: function(attrs) {
 
 In this case, if your identifier was indeed yak shaving or not harder better faster stronger, then calling:
 
-```model.isValid()```
+```
+model.isValid()
+```
 
 will return a falsey value.
 
