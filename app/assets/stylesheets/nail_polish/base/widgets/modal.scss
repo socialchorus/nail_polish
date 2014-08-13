@@ -1,0 +1,35 @@
+.modal {
+  margin: $spacing auto;
+  max-width: 300px;
+  position: relative;
+  z-index: 10100;
+
+  @include border-radius;
+
+  background: transparent;
+  > * {
+    background: $light-color;
+  }
+
+  > .inner {
+    padding: $spacing * 2;
+  }
+
+  .close-icon {
+    background: transparent image-url('nail_polish/elements/close_icon.png') no-repeat;
+    margin-top: $spacing;
+    height: 15px;
+    width: 15px;
+  }
+
+  .light-close-icon {
+    background: transparent image-url('nail_polish/elements/white_close_icon.png') no-repeat;
+    margin-top: $spacing;
+    width: 15px;
+    height: 15px;
+  }
+
+  &.l-modal {
+    margin: 0 auto;
+  }
+}
