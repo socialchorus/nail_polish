@@ -47,16 +47,4 @@ describe("NailPolish.Events", function() {
       expect(sentMessage).toBe(undefined);
     });
   });
-
-  describe("isWindowsTouch", function(){
-    it("should return true for a Windows device", function() {
-      navigator.__defineGetter__('userAgent', function(){
-        return '("Mozilla/5.0 (Windows NT 6.2; WOW64) Chrome(29.0.1547)")'; // customized user agent
-      });
-      expect(NailPolish.Events.isWindowsTouch()).toEqual(true);
-      navigator.__defineGetter__('userAgent', function(){
-        return ''; // decustomize for other tests
-      });
-    })
-  });
 });

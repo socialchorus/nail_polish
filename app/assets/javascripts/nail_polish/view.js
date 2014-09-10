@@ -49,16 +49,6 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   },
 
   events: function () {
-    if (NailPolish.Events.isTouch() && !NailPolish.Events.isWindowsTouch()) {
-      var eventSet = {};
-
-      _.each(_.keys(this.addListeners), function (eventKey) {
-        var key = eventKey.replace('click', NailPolish.Events.startEvent);
-        eventSet[key] = this.addListeners[eventKey];
-      }.bind(this));
-
-      return eventSet;
-    }
     return this.addListeners;
   },
 

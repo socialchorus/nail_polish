@@ -31,7 +31,7 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
     this.$('.menu-trigger').addClass("selected");
     this.$('.menu-items').css("display", "block");
     this.onBodyClick = this.hideMenu.bind(this);
-    $('body').on(NailPolish.Events.click, this.onBodyClick);
+    $('body').on('click', this.onBodyClick);
     e.stopPropagation();
     e.preventDefault();
   },
@@ -49,7 +49,7 @@ NailPolish.Widget.Menu = NailPolish.View.extend({
 
   removeBodyListener: function() {
     if(this.onBodyClick){
-      $('body').off(NailPolish.Events.click, this.onBodyClick);
+      $('body').off('click', this.onBodyClick);
       this.onBodyClick = undefined;
     }
   },

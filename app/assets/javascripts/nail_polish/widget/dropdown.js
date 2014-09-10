@@ -38,11 +38,11 @@ NailPolish.Widget.Dropdown = NailPolish.View.extend({
 
   showMenu: function() {
     this.$el.find(this.menuSelector).removeClass(this.hiddenClass);
-    $('body').on(NailPolish.Events.click, this.hideMenu.bind(this));
+    $('body').on('click', this.hideMenu.bind(this));
   },
 
   removeBodyListener: function() {
-    $('body').off(NailPolish.Events.click, this.hideMenu.bind(this));
+    $('body').off('click', this.hideMenu.bind(this));
   },
 
   renderTemplate: function () {
