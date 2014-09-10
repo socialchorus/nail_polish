@@ -68,3 +68,33 @@
     }
   }
 }
+
+@mixin down-arrow($size, $border-size, $left-pos, $background-color, $border-color) {
+  .down-arrow {
+    position: relative;
+    background: $background-color;
+
+    &:after, &:before {
+      top: 100%;
+      left: $left-pos;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    &:after {
+      border-color: transparent;
+      border-top-color: $background-color;
+      border-width: $size;
+      margin-left: -$size;
+    }
+    &:before {
+      border-color: transparent;
+      border-top-color: $border-color;
+      border-width: $size + $border-size;
+      margin-left: -($size + $border-size);
+    }
+  }
+}
