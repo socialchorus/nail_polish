@@ -241,87 +241,87 @@ will return a falsey value.
 
 ## TOC
 
-* [Hogan-compilation-for-performance](#hogan-compilation-for-performance)
-* [template-in-page-render-to-prevent-large-resources](#template-in-page-render-to-prevent-large-resources)
+* [Hogan compilation for performance](#hogan-compilation-for-performance)
+* [template in page render to prevent large resources](#template-in-page-render-to-prevent-large-resources)
 * [widgets](#widgets)
-  * [Dropdown-menu](#dropdown-menu)
-  * [back-button](#back-button)
+  * [Dropdown menu](#dropdown-menu)
+  * [back button](#back-button)
   * [modal](#modal)
-  * [NailPolish.Widget.StackableModal](#stackable-modal)
-  * [form-view](#form-view)
-  * [model-view](#model-view)
-  * [collection-view](#collection-view)
+  * [NailPolish.Widget.StackableModal](#nailpolishwidgetstackablemodal)
+  * [form view](#form-view)
+  * [model view](#model-view)
+  * [collection view](#collection-view)
 * [generators](#generators)
   * [view](#view)
   * [template](#template)
   * [presenter](#presenter)
-  * [specs-for-presenter-and-view](#specs-for-presenter-and-view)
-* [js-models](#js-models)
-* [simplified-CSS](#simplified-css)
+  * [specs for presenter and view](#specs-for-presenter-and-view)
+* [js models](#js-models)
+* [simplified CSS](#simplified-css)
 
-### [Hogan compilation for performance](#hogan-compilation-for-performance)
+### Hogan compilation for performance
 
 TODO
 
-### [template in page render to prevent large resources](#template-in-page-render-to-prevent-large-resources)
+### template in page render to prevent large resources
 
 TODO
 
 ## Widgets
 
-### [Dropdown menu](#dropdown-menu)
+### Dropdown menu
 
 TODO
 
-### [back button](#back-button)
+### back button
 
 TODO
 
-### [modal](#modal)
+### modal
 
 TODO
 
-### [NailPolish.Widget.StackableModal](#stackable-modal)
+### NailPolish.Widget.StackableModal
 
 *Requirements*:
 
 Page markup must contain `<div id="stackable-modal-overlay">` at the end of the page.
 
-### [form view](#form-view)
+### form view
 
 TODO
 
-### [model view](#model-view)
+### model view
 
 TODO
 
-### [collection view](#collection-view)
+### collection view
 
 TODO
 
 ## Generators
 
-### [view](#view)
+### view
 
 TODO
 
-### [template](#template)
+### template
 
 TODO
 
-### [presenter](#presenter)
+### presenter
 
 TODO
 
-### [specs for presenter and view](#specs-for-presenter-and-view)
+### specs for presenter and view
 
 TODO
 
-### [js models](#js-models)
+### js models
 
 TODO
 
-### [simplified CSS](#simplified-css)
+### simplified CSS
 
 TODO
 
