@@ -13,6 +13,18 @@ body {
   background: transparent image-url('nail_polish/backgrounds/black-0_5.png') repeat;
 }
 
+#stackable-overlay-container {
+  .overlay {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: transparent url('nail_polish/backgrounds/black-0_5.png') repeat;
+  }
+}
+
 #page {
   background: $light-color image-url('nail_polish/backgrounds/light_bg.png') repeat;
 

@@ -2,26 +2,28 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   parent: 'body',
   parentSelector: '#overlay-container',
   attachmentMethod: 'html',
+  baseModalTemplateName: "nail_polish/templates/modal",
+  overlaySelector: "#overlay",
 
   events: function () {
     _.extend(this.addListeners, {
       'click .close-modal': 'close',
-      'click .cancel-link a': 'close',
-      'click #overlay': 'verifyTargetAndClose'
+      'click .cancel-link a': 'close'
     });
 
+    this.addListeners["click " + this.overlaySelector] = "verifyTargetAndClose";
     return NailPolish.View.prototype.events.apply(this);
   },
 
   verifyTargetAndClose: function (e) {
-    if($(e.target).is('#overlay')) {
+    if($(e.target).is(this.overlaySelector)) {
       this.close();
     }
   },
 
   renderTemplate: function () {
     // switch declared template into a partial for consistent usage
-    var template = HoganTemplates['nail_polish/templates/modal'];
+    var template = HoganTemplates[this.baseModalTemplateName];
     var partials = _.extend(this.partials(), {
       modal_content: HoganTemplates[this.templateName]
     });
@@ -45,7 +47,8 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
       e.preventDefault(); // This is necessary to prevent clicking on elements behind the modal
     }
     NailPolish.Events.unsubscribe('page:new', this.close, this);
-    $('body').removeClass('no-scroll');
+
+    this.unfreezeBody();
     this.remove();
     this.onClose();
   },
@@ -66,5 +69,9 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
 
   freezeBody: function() {
     $('body').addClass('no-scroll');
+  },
+
+  unfreezeBody: function() {
+    $('body').removeClass('no-scroll');
   }
 });
