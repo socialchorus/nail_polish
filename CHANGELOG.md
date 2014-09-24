@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+## 0.4.0 - 2014-09-24
+
+### Changed
+- Removed z-index from NailPolish.Widget.Modal `#overlay`. *The `#overlay` div should be moved to the bottom of the page!*
+
+### Added
+- NailPolish.Widget.StackableModal
+
 ## 0.3.0 - 2014-09-10
 
 ### Changed
