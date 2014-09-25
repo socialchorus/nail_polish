@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+## 0.4.1 - 2014-09-25
+
+### Fixed
+- Removed accidentally forgotten inline overlay style for stackable modals, causing much lighter overlay color.
+
 ## 0.4.0 - 2014-09-24
 
 ### Changed
