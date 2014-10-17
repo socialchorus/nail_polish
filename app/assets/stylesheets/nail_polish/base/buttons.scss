@@ -6,7 +6,8 @@ input[type=submit] {
 button,
 input[type=submit],
 a.button,
-div.button {
+div.button,
+label.button {
   font-size: $em*1.2;
   font-family: $headline-font;
   font-weight: normal;
