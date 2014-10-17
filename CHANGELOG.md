@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+## 0.4.2 - 2014-10-17
+
+### Added
+- It is not possible to apply `.button` styles to `label` tags.
+
 ## 0.4.1 - 2014-09-25
 
 ### Fixed
