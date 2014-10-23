@@ -111,6 +111,13 @@ describe("NailPolish.View", function () {
       it('renders the related Hogan template', function () {
         expect(view.$('.view-class-inner').length).toBe(1);
       });
+
+      it("fires off an event on window (so that the placeholder shim can do its job in IE)", function () {
+        var spy = jasmine.createSpy();
+        view.listenTo($(window), 'NPView::Rendered', spy);
+        view.render();
+        expect(spy).toHaveBeenCalled();
+      });
     });
 
     describe('using the presenter', function () {

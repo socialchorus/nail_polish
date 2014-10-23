@@ -14,6 +14,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
 
   start: function () {
     this.repository = this.buildRepository();
+    this.attachPlaceholderShim();
     this.render();
     this.route();
   },
@@ -22,6 +23,15 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
     this.router = new (this.routerClass(this.$el))();
     this.router.repository = this.repository;
     Backbone.history.start();
+  },
+
+  attachPlaceholderShim: function () {
+    var fireShim = _.throttle(function () {
+      console.log('the shim has been fired!')
+      $.placeholder.shim();
+    }, 200);
+
+    $(window).on('NPView::Rendered', fireShim);
   },
 
   render: function() {

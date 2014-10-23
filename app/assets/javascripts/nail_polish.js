@@ -24,3 +24,4 @@
 //= require_tree ./nail_polish/views
 //= require nail_polish/router
 //= require nail_polish/app
+//= require vendor/jquery-html5-placeholder-shim
