@@ -27,7 +27,6 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
 
   attachPlaceholderShim: function () {
     var fireShim = _.throttle(function () {
-      console.log('the shim has been fired!')
       $.placeholder.shim();
     }, 200);
 
