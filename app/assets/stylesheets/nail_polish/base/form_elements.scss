@@ -30,7 +30,7 @@ textarea {
 }
 
 /* A fake input will look like an input, but not be usable.
-   This will be used for */ 
+   This will be used for */
 .fake-input {
   background-color: $light-color;
   font-size: $em;
@@ -71,9 +71,6 @@ input[type=checkbox] {
 }
 
 textarea {
-  width: 100%;
-  font-size: $em * 0.8;
-  background-color: #f1f1f1;
   min-height: 100px;
 }
 
