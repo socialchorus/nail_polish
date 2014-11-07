@@ -3,12 +3,15 @@
 //= require hogan
 //
 //= require nail_polish/nail_polish
+//= require nail_polish/namespace
 //= require_tree ./nail_polish/utils
 //= require nail_polish/overrides/function_bind
 //= require nail_polish/overrides/auth_token_adder
 //= require nail_polish/overrides/global_publisher_adder
 //= require nail_polish/overrides/for_backbone
 //
+//= require_tree ./nail_polish/mixins
+//= require ./nail_polish/collection
 //= require ./nail_polish/model
 //= require ./nail_polish/validator
 //= require_tree ./nail_polish/templates

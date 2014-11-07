@@ -21,7 +21,3 @@ var NailPolish = {
     });
   }
 };
-
-NailPolish.Widget = {};
-NailPolish.Models = {};
-NailPolish.Views = {};

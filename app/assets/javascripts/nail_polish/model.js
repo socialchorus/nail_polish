@@ -19,7 +19,7 @@
 
   This would also trigger an 'invalid' event on the model.
 */
-NailPolish.Model = Backbone.Model.extend({
+NailPolish.Model = Backbone.Model.extend(_.extend(NailPolish.Mixins.Fetch, {
   constructor: function() {
     var result = Backbone.Model.apply(this, arguments);
     this._initializeInternalEvents();
@@ -46,4 +46,4 @@ NailPolish.Model = Backbone.Model.extend({
       return;
     }
   }
-});
+}));

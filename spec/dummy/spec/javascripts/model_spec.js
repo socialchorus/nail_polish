@@ -1,26 +1,24 @@
 describe("NailPolish.Model", function() {
-  var jsonErrorResponse;
+  var model, jsonErrorResponse;
 
-  beforeEach(function () {
+  beforeEach(function() {
+    model = new NailPolish.Model();
+    model.url = '/foo';
     jsonErrorResponse = {
       responseText: JSON.stringify({ errors: { foo: ["bar"] } })
     };
   });
 
   it("is a Backbone.Model still", function() {
-    expect(new NailPolish.Model() instanceof Backbone.Model).toBeTruthy();
+    expect(model instanceof Backbone.Model).toBeTruthy();
+  });
+
+  it("Uses the fetch mixin", function() {
+    expect(model.fetch).toBe(NailPolish.Mixins.Fetch.fetch);
   });
 
   describe("#save", function() {
-    var model;
-
-    beforeEach(function() {
-      model = new NailPolish.Model();
-      model.url = '/foo';
-    });
-
     describe("when there were server errors", function() {
-
       it("populates validationError with server errors", function() {
         model.trigger('error', model, jsonErrorResponse, {});
         expect(model.validationError).toEqual({ foo: ["bar"] });
