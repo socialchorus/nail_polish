@@ -24,12 +24,21 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   },
 
   render: function () {
+    var opts = arguments[0] || {};
+    opts = _.extend({
+      attachToParent: true
+    }, opts);
+
     this.renderTemplate();
     this.renderSubviews();
-    this.attachToParent();
-    this.afterRender();
+    if (opts.attachToParent) this.attachToParent();
 
     $(window).trigger('NPView::Rendered');
+    this.afterRender();
+  },
+
+  reRender: function() {
+    this.render({attachToParent: false});
   },
 
   subviews: function () {

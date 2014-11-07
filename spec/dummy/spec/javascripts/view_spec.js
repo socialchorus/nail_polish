@@ -219,6 +219,24 @@ describe("NailPolish.View", function () {
         expect(sub.parent).not.toBe(view);
       });
     });
+
+    describe('render', function() {
+      describe('when you pass in attachToParent as false', function() {
+        it('the view does not attach itself to the parent element', function() {
+          spyOn(view, 'attachToParent');
+          view.render({attachToParent: false});
+          expect(view.attachToParent).not.toHaveBeenCalled();
+        });
+      });
+    });
+
+    describe("reRender", function () {
+      it("calls render with attachToParent false to just rerender in place", function () {
+        spyOn(view, 'render');
+        view.reRender();
+        expect(view.render).toHaveBeenCalledWith({attachToParent: false});
+      });
+    });
   });
 
   describe('presenter', function () {
