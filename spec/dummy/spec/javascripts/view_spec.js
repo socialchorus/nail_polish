@@ -236,6 +236,12 @@ describe("NailPolish.View", function () {
         view.reRender();
         expect(view.render).toHaveBeenCalledWith({attachToParent: false});
       });
+
+      it("delegates events again to make sure events are fired correctly after reRender", function() {
+        spyOn(view, 'delegateEvents');
+        view.reRender();
+        expect(view.delegateEvents).toHaveBeenCalled();
+      });
     });
   });
 

@@ -39,6 +39,7 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
 
   reRender: function() {
     this.render({attachToParent: false});
+    this.delegateEvents();
   },
 
   subviews: function () {
