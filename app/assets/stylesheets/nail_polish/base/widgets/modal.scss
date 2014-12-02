@@ -1,6 +1,7 @@
 .modal {
   margin: $spacing auto;
-  max-width: 300px;
+  max-width: 320px;
+  min-width: 320px;
   position: relative;
 
   @include border-radius;
