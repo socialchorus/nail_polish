@@ -20,12 +20,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'hogan_assets' # for client side packaging of mustache templates
   s.add_dependency 'compass-rails'
 
-
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'rspec-instafail'
-  s.add_development_dependency 'cucumber-rails'
-  s.add_development_dependency 'selenium-webdriver', '~> 2.35'
-  s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'jasmine', '~> 2.1.0'
-  s.add_development_dependency 'zip' # required by selenium-webdriver, but not bundled correctly
 end
