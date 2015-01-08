@@ -3,22 +3,14 @@
 
 .l-unit{float:left;}
 .l-unit-right{float:right;}
-.l-1of1{width:100%;}
-.l-1of2{width:50%;}
-.l-1of3{width:33.33333%;}
-.l-2of3{width:66.66666%;}
-.l-1of4{width:25%;}
-.l-3of4{width:75%;}
-.l-1of5{width:20%;}
-.l-2of5{width:40%;}
-.l-3of5{width:60%;}
-.l-4of5{width:80%;}
-.l-1of6{width:16.66666%;}
-.l-4of6{width:66.66666%;}
-.l-5of6{width:83.33333%;}
-.l-1of10{width:10%;}
-.l-3of10{width:30%;}
-.l-9of10{width: 90%}
+
+@for $denominator from 1 through 10 {
+  @for $numerator from 1 through $denominator {
+    .l-#{$numerator}of#{$denominator} {
+      width: percentage($numerator / $denominator);
+    }
+  }
+}
 
 .m-hidden,
 .s-hidden {
