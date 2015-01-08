@@ -1,15 +1,18 @@
 describe('NailPolish.App', function() {
-  var app, NewApp;
+  var app, NewApp, RouterClass;
 
   beforeEach(function() {
+    RouterClass = NailPolish.Router;
     spyOn(Backbone.history, 'start');
+
+    NewApp = NailPolish.App.extend({
+      routerClass: function() {
+        return RouterClass;
+      }
+    });
   });
 
   describe('initializing an app', function() {
-    beforeEach(function() {
-      NewApp = NailPolish.App.extend();
-    });
-
     it('it calls init', function() {
       var parent, opts;
       spyOn(NewApp.prototype, 'init');
@@ -22,7 +25,7 @@ describe('NailPolish.App', function() {
     var $bootstrapData;
 
     beforeEach(function() {
-      NewApp = NailPolish.App.extend({
+      NewApp = NewApp.extend({
         bootstrapDataSelector: '#my-data'
       });
 
@@ -47,19 +50,8 @@ describe('NailPolish.App', function() {
   });
 
   describe('initializing the router', function() {
-    var RouterClass;
-
     beforeEach(function() {
-      RouterClass = NailPolish.Router.extend();
-
-      NewApp = NailPolish.App.extend({
-        routerClass: function() {
-          return RouterClass;
-        }
-      });
-
       app = new NewApp();
-
       app.route();
     });
 
@@ -84,7 +76,7 @@ describe('NailPolish.App', function() {
       spyOn(subviewTwo, 'render');
       spyOn(subviewThree, 'render');
 
-      NewApp = NailPolish.App.extend({
+      NewApp = NewApp.extend({
         subviews: function() {
           return [
             subviewOne,

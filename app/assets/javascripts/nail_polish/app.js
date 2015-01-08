@@ -7,21 +7,19 @@ NailPolish.App.extend = Backbone.Model.extend;
 _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), {
   initialize: function(parent, opts) {
     this.$el = parent; // will act like a view when the parent finder encounters it
-    // TODO: switch naming to el/$el everywhere???
     this.opts = opts;
+    this.router = new (this.routerClass(this.$el))();
+    this.router.repository = this.repository = this.buildRepository();
     this.init(parent, opts);
   },
 
   start: function () {
-    this.repository = this.buildRepository();
     this.attachPlaceholderShim();
     this.render();
     this.route();
   },
 
   route: function() {
-    this.router = new (this.routerClass(this.$el))();
-    this.router.repository = this.repository;
     Backbone.history.start();
   },
 
@@ -38,7 +36,7 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
     this.afterRender();
   },
 
-  afterRender: function(){
+  afterRender: function() {
 
   },
 
@@ -68,14 +66,14 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
   },
 
   subviews: function() {
-   //fill me in
+    //fill me in
 
-   //return [
-   // new View.That.I.Want.To.Render({model: model})
-   //]
+    //return [
+    // new View.That.I.Want.To.Render({model: model})
+    //]
   },
 
   routerClass: function() {
-    //set this, yo
+    throw "A router class is required for apps.";
   }
 }));
