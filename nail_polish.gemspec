@@ -19,6 +19,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'mustache'
   s.add_dependency 'hogan_assets' # for client side packaging of mustache templates
   s.add_dependency 'compass-rails'
-
-  s.add_development_dependency 'jasmine', '~> 2.1.0'
 end
