@@ -26,11 +26,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'cucumber-rails'
   s.add_development_dependency 'selenium-webdriver', '~> 2.35'
   s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'jasmine', '~> 2.1.0'
   s.add_development_dependency 'zip' # required by selenium-webdriver, but not bundled correctly
-
-  # Currently these are in alpha or beta, so the github base require
-  # has to be put into the actual Gemspec
-  #
-  #s.add_development_dependency 'jasmine-core', github: 'pivotal/jasmine'
-  #s.add_development_dependency 'jasmine', github: 'pivotal/jasmine-gem'
 end

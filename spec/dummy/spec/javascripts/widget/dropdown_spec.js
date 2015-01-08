@@ -34,10 +34,10 @@ describe("NailPolish.Widget.Dropdown", function(){
     dropdownView = new View({model: model});
     triggerEvent = jasmine.createSpyObj('event', [ 'stopPropagation' ]);
     dropdownView.render();
-  })
+  });
 
   afterEach(function(){
-    $('#jasmine_content').html("")
+    $('#jasmine_content').html("");
   });
 
   describe('#toggle', function() {
@@ -61,12 +61,12 @@ describe("NailPolish.Widget.Dropdown", function(){
 
   describe('clicking a menu-item', function() {
     it('should set the selected value to the selected item', function() {
-      dropdownView.$('.menu-item')[1].click();
-      expect(dropdownView.model.selected()).toBe("option2")
+      dropdownView.$('.menu-item:nth-child(2)').trigger("click");
+      expect(dropdownView.model.selected()).toBe("option2");
     });
 
     it('should close the menu', function() {
-      dropdownView.$('.menu-item')[1].click();
+      dropdownView.$('.menu-item:nth-child(1)').trigger("click");
       expect($('.dummy-dropdown-menu').hasClass('hidden')).toBeTruthy();
     });
   });
