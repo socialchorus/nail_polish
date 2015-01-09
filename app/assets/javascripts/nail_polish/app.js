@@ -9,11 +9,11 @@ _.extend(NailPolish.App.prototype, _.extend(_.clone(NailPolish.SubviewManager), 
     this.$el = parent; // will act like a view when the parent finder encounters it
     this.opts = opts;
     this.router = new (this.routerClass(this.$el))();
-    this.router.repository = this.repository = this.buildRepository();
     this.init(parent, opts);
   },
 
   start: function () {
+    this.router.repository = this.repository = this.buildRepository();
     this.attachPlaceholderShim();
     this.render();
     this.route();
