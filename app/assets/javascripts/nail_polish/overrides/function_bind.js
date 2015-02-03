@@ -1,6 +1,4 @@
-Function.prototype.bind = Function.prototype.bind || function(context) {
-  var func = this;
-  return function() {
-    return func.apply(context, arguments);
-  };
+Function.prototype.bind = function(context) {
+  args = [this].concat(_.toArray(arguments))
+  return _.bind.apply(this, args);
 };
