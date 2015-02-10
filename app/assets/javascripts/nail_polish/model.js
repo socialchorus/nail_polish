@@ -23,7 +23,12 @@ NailPolish.Model = Backbone.Model.extend({
   constructor: function() {
     var result = Backbone.Model.apply(this, arguments);
     this._initializeInternalEvents();
+    this.init(arguments);
     return result;
+  },
+
+  init: function (arguments) {
+    //override in subclass!
   },
 
   _initializeInternalEvents: function() {
