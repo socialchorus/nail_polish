@@ -52,6 +52,7 @@ describe('NailPolish.App', function() {
   describe('initializing the router', function() {
     beforeEach(function() {
       app = new NewApp();
+      app.start();
       app.route();
     });
 

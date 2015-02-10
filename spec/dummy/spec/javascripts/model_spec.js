@@ -11,6 +11,15 @@ describe("NailPolish.Model", function() {
     expect(new NailPolish.Model() instanceof Backbone.Model).toBeTruthy();
   });
 
+  describe("init", function () {
+    it("should be called with all the arguments the constructor is called with", function () {
+      spyOn(NailPolish.Model.prototype, 'init');
+      var someArgs = {thing: 'ya'}
+      var model = new NailPolish.Model(someArgs);
+      expect(model.init).toHaveBeenCalledWith(someArgs);
+    });
+  });
+
   describe("#save", function() {
     var model;
 

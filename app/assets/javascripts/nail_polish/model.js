@@ -20,14 +20,14 @@
   This would also trigger an 'invalid' event on the model.
 */
 NailPolish.Model = Backbone.Model.extend({
-  constructor: function() {
+  constructor: function(opts) {
     var result = Backbone.Model.apply(this, arguments);
     this._initializeInternalEvents();
-    this.init(arguments);
+    this.init(opts);
     return result;
   },
 
-  init: function (arguments) {
+  init: function (opts) {
     //override in subclass!
   },
 
