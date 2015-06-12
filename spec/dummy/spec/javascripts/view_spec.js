@@ -303,5 +303,11 @@ describe("NailPolish.View", function () {
         expect(subview.remove).toHaveBeenCalled();
       });
     });
+
+    it("calls afterRemove", function () {
+      spyOn(view, 'afterRemove');
+      view.remove();
+      expect(view.afterRemove).toHaveBeenCalled();
+    });
   });
 });

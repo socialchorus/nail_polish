@@ -50,6 +50,8 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   afterRender: function () { /* template method hook ! */
   },
 
+  afterRemove: function() {},
+
   events: function () {
     return this.addListeners;
   },

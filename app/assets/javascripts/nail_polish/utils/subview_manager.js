@@ -13,16 +13,20 @@ NailPolish.SubviewManager = {
 
   remove: function() {
     this.removeSelf();
+    if (this.afterRemove) {
+      this.afterRemove();
+    }
 
     _.each(this._subviews, function(subview) {
-      if (subview){ 
+      if (subview){
         subview.remove();
       }
     });
+
   },
 
   removeSelf: function() { /* override me */ },
-  defaultParent: function() { 
-    return this; 
+  defaultParent: function() {
+    return this;
   }
 };
