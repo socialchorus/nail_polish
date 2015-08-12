@@ -54,29 +54,25 @@ describe("NailPolish.View", function () {
 
   describe("reRender", function () {
     beforeEach(function () {
-      beforeEach(function () {
-        view = new ViewClass();
-      });
+      view = new ViewClass();
       spyOn(view, 'render');
       spyOn(view, 'renderTemplate');
       spyOn(view, 'renderSubviews');
       spyOn(view, 'delegateEvents');
       spyOn(view, 'afterRender');
+      view.reRender();
     });
 
     describe("in general", function () {
       it("reRenders the view in place (renderTemplate)", function () {
-        view.reRender();
         expect(view.renderTemplate).toHaveBeenCalled();
       });
 
       it("renders any subviews", function () {
-        view.reRender();
         expect(view.renderSubviews).toHaveBeenCalled();
       });
 
       it("reattaches events", function () {
-        view.reRender();
         expect(view.delegateEvents).toHaveBeenCalled();
       });
     });
