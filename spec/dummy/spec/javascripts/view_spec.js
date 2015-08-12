@@ -49,7 +49,51 @@ describe("NailPolish.View", function () {
       var PresenterClass = NailPolish.Presenter.extend();
       view = new ViewClass({presenterClass: PresenterClass});
       expect(view.presenterClass()).toBe(PresenterClass);
-    })
+    });
+  });
+
+  describe("reRender", function () {
+    beforeEach(function () {
+      beforeEach(function () {
+        view = new ViewClass();
+      });
+      spyOn(view, 'render');
+      spyOn(view, 'renderTemplate');
+      spyOn(view, 'renderSubviews');
+      spyOn(view, 'delegateEvents');
+      spyOn(view, 'afterRender');
+    });
+
+    describe("in general", function () {
+      it("reRenders the view in place (renderTemplate)", function () {
+        view.reRender();
+        expect(view.renderTemplate).toHaveBeenCalled();
+      });
+
+      it("renders any subviews", function () {
+        view.reRender();
+        expect(view.renderSubviews).toHaveBeenCalled();
+      });
+
+      it("reattaches events", function () {
+        view.reRender();
+        expect(view.delegateEvents).toHaveBeenCalled();
+      });
+    });
+
+    describe("full is passed in the opts", function () {
+      it("calls a full render", function () {
+        view.reRender({full: true});
+        expect(view.render).toHaveBeenCalled();
+      });
+    });
+
+    describe("afterRender is passed in the opts", function () {
+      it("calls afterRender", function () {
+        view.reRender({afterRender: true});
+        expect(view.afterRender).toHaveBeenCalled();
+      });
+    });
   });
 
   describe("rendering", function () {
@@ -66,15 +110,15 @@ describe("NailPolish.View", function () {
         beforeEach(function(){
           view = new ViewClass({
             className: 'test-class',
-            templateName: function(){ return 'something'}
-            })
+            templateName: function(){ return 'something';}
+          });
 
           HoganTemplates['something'] = {
             render: function () {
               return "<div class='test-class-inner'></div>";
             }
           };
-        })
+        });
 
         it('renders via Backbone with the right class', function () {
           expect($(view.el).attr('class')).toBe('test-class');
