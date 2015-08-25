@@ -56,9 +56,9 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
       this.render();
     }else {
       this.renderTemplate();
+      this.renderSubviews();
     }
-    
-    this.renderSubviews();
+
     this.delegateEvents();
 
     if(opts.afterRender === true) {
