@@ -44,26 +44,60 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
     var $parent = new NailPolish.View.ParentFinder(
       this.parent, this.parentSelector, this.attachmentMethod
     ).perform();
-    $parent && $parent[this.attachmentMethod](this.el);
+    if ($parent) {
+      $parent[this.attachmentMethod](this.el);
+    }
   },
 
-  afterRender: function () { /* template method hook ! */
+  afterRender: function () {
+    /* template method hook ! */
   },
 
   reRender: function (opts) {
     opts = opts || {};
     if (opts.full === true) {
       this.render();
-    }else {
+    } else {
       this.renderTemplate();
       this.renderSubviews();
     }
 
     this.delegateEvents();
 
-    if(opts.afterRender === true) {
+    if (opts.afterRender === true) {
       this.afterRender();
     }
+  },
+
+  reTemplate: function(opts) {
+    opts = _.extend({
+      template: true,
+      subviews: true,
+      events: true,
+      afterRender: true,
+      resetClass: true
+    }, opts);
+
+    if (opts.resetClass) {
+      this.resetClass();
+    }
+    if (opts.template) {
+      this.renderTemplate();
+    }
+    if (opts.subviews) {
+      this.renderSubviews();
+    }
+    if (opts.events) {
+      this.delegateEvents();
+    }
+    if (opts.afterRender) {
+      this.afterRender();
+    }
+  },
+
+  resetClass: function() {
+    this.$el.removeClass();
+    this.$el.addClass(_.result(this, 'className'));
   },
 
   events: function () {
@@ -71,7 +105,7 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   },
 
   renderTemplate: function () {
-    var templateName = _.isFunction(this.templateName) ? this.templateName() : this.templateName;
+    var templateName = _.result(this, 'templateName');
 
     var template = HoganTemplates[templateName];
     if (!template) {
