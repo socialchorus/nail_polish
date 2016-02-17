@@ -4,6 +4,7 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
   attachmentMethod: 'html',
   baseModalTemplateName: "nail_polish/templates/modal",
   overlaySelector: "#overlay",
+  closeConditionsMet: true,
 
   events: function () {
     _.extend(this.addListeners, {
@@ -46,11 +47,14 @@ NailPolish.Widget.Modal = NailPolish.View.extend({
     if(e){
       e.preventDefault(); // This is necessary to prevent clicking on elements behind the modal
     }
-    NailPolish.Events.unsubscribe('page:new', this.close, this);
-
-    this.unfreezeBody();
-    this.remove();
-    this.onClose();
+    if (this._subject && typeof this._subject.beforeClose === "function" && !this._subject.beforeClose()) {
+      return;
+    }else {
+      NailPolish.Events.unsubscribe('page:new', this.close, this);
+      this.unfreezeBody();
+      this.remove();
+      this.onClose();
+    }
   },
 
   onClose: function() {}, // to be implemented by subclasses
