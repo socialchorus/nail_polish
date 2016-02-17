@@ -38,7 +38,9 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
   __afterMount: function() {
     this.afterMount();
     _.each(this._subviews, function(subview) {
-      subview.__afterMount();
+      if (subview.__afterMount) {
+        subview.__afterMount();
+      }
     }.bind(this));
   },
 
