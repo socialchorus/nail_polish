@@ -18,8 +18,9 @@ describe("NailPolish.View.ParentFinder", function() {
       });
 
       it('and the selector is globally available on the page', function() {
-        var $parent = $('<div id="foo">bar</div>');
-        $('body').append($parent);
+        $('body').append($('<div id="foo">bar</div>'));
+
+        $parent = $('#foo');
 
         expect(finder.perform()).toEqual($parent);
 

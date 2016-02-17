@@ -129,7 +129,7 @@ describe("NailPolish.View", function () {
 
       describe('there is no template specified', function () {
         beforeEach(function () {
-          HoganTemplates['view_class'] = undefined;
+          HoganTemplates.view_class = undefined;
         });
 
         it('doesnt explode', function () {
@@ -141,7 +141,7 @@ describe("NailPolish.View", function () {
           }
 
           expect(thrown).toBeFalsy();
-        })
+        });
       });
 
       it('renders via Backbone with the right class', function () {
@@ -154,7 +154,7 @@ describe("NailPolish.View", function () {
 
       it("fires off an event on window (so that the placeholder shim can do its job in IE)", function () {
         var spy = jasmine.createSpy();
-        view.listenTo($(window), 'NPView::Rendered', spy);
+        $(window).on('NPView::Rendered', spy);
         view.render();
         expect(spy).toHaveBeenCalled();
       });
@@ -163,7 +163,7 @@ describe("NailPolish.View", function () {
     describe('using the presenter', function () {
       beforeEach(function () {
         spyOn(view, 'presenter').and.returnValue({foo: 'bar'});
-        spyOn(HoganTemplates['view_class'], 'render');
+        spyOn(HoganTemplates.view_class, 'render');
       });
 
       it('passes the presenter to HoganTemplates as the view model', function () {
