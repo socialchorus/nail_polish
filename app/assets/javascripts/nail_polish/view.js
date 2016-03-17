@@ -116,6 +116,8 @@ NailPolish.View = Backbone.View.extend(_.extend(_.clone(NailPolish.SubviewManage
     this.$el.addClass(_.result(this, 'className'));
   },
 
+  afterRemove: function() {},
+
   events: function () {
     return this.addListeners;
   },
