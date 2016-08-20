@@ -19,7 +19,7 @@
 
   This would also trigger an 'invalid' event on the model.
 */
-NailPolish.Model = Backbone.Model.extend({
+NailPolish.Model = Backbone.NestedModel.extend({
   constructor: function(opts) {
     var result = Backbone.Model.apply(this, arguments);
     this._initializeInternalEvents();
