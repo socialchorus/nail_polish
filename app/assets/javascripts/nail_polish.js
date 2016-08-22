@@ -1,5 +1,6 @@
 //= require vendor/underscore
 //= require vendor/backbone
+//= require vendor/backbone-nested-models
 //= require hogan
 //
 //= require nail_polish/nail_polish
