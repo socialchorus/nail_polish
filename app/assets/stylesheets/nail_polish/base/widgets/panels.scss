@@ -6,7 +6,6 @@
 .panel {
   background-color: $light-color;
   @include standard-panel;
-  @include box-shadow(3px 3px 0 rgba(0,0,0,0.07));
 }
 
 .flat-panel {
