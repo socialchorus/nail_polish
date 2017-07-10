@@ -6,3 +6,4 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache
 .idea
 **/*.DS_Store
+.ruby-gemset
