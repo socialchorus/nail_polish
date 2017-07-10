@@ -1,6 +1,9 @@
 Change Log
 ==========
 
+## 0.4.3 - 2017-07-10
+- Integrate i18n-js into NailPolish to be able to easily localize strings in templates
+
 ## 0.4.2 - 2014-10-17
 
 ### Added

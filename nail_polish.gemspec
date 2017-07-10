@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'mustache'
   s.add_dependency 'hogan_assets' # for client side packaging of mustache templates
   s.add_dependency 'compass-rails'
+  s.add_dependency 'i18n-js'
 end
