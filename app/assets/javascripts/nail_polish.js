@@ -3,10 +3,6 @@
 //= require vendor/backbone-nested-models
 //= require hogan
 //
-//= require i18n
-//= require i18n.js
-//= require i18n/translations
-//
 //= require nail_polish/nail_polish
 //= require_tree ./nail_polish/utils
 //= require nail_polish/overrides/function_bind
