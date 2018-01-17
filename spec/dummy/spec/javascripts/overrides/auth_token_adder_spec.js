@@ -7,7 +7,7 @@ describe("NailPolish.AuthTokenAdder", function() {
     return adder.perform();
   };
 
-  describe("GET requests", function() {
+  describe("GET", function() {
     beforeEach(function() {
       args = {
         url: '/foo?search=some-term',
@@ -21,6 +21,7 @@ describe("NailPolish.AuthTokenAdder", function() {
   });
 
   describe("DELETE", function() {
+    var data;
     beforeEach(function() {
       args = {
         url: '/my_resource',
@@ -28,67 +29,58 @@ describe("NailPolish.AuthTokenAdder", function() {
       };
     });
 
-    it("adds the auth token to the url", function() {
-      var url = transformedArguments(args).url;
-      expect(url).toMatch(/\?authenticity_token=/)
+    it("adds the auth token to request headers", function() {
+      data = transformedArguments(args);
+      expect(Object.keys(data)).toContain('headers');
+      expect(Object.keys(data.headers)).toContain('X-CSRF-Token');
     });
   });
 
-  describe("other requests", function() {
+  describe("POST", function() {
     var data;
-    describe("no data", function() {
-      beforeEach(function() {
-        args = {
-          url: '/my_resource',
-          type: 'PATCH'
-        };
-      });
-
-      it("adds the auth token as the only data", function() {
-        data = transformedArguments(args).data;
-        expect(_.isString(data)).toBe(true);
-        expect(JSON.parse(data).authenticity_token).toBe('authToken');
-      });
+    beforeEach(function() {
+      args = {
+        url: '/my_resource',
+        type: 'POST'
+      };
     });
 
-    describe("string data", function() {
-      beforeEach(function() {
-        args = {
-          url: '/my_resource',
-          type: 'PATCH',
-          data: JSON.stringify({goo:'far'})
-        };
+    it("adds the auth token to request headers", function() {
+      data = transformedArguments(args);
+      expect(Object.keys(data)).toContain('headers');
+      expect(Object.keys(data.headers)).toContain('X-CSRF-Token');
+    });
+  });
 
-        data = JSON.parse(transformedArguments(args).data);
-      });
-
-      it("maintains existing data", function() {
-        expect(data.goo).toEqual('far');
-      });
-
-      it("adds the auth token", function() {
-        expect(data.authenticity_token).toBe('authToken');
-      });
+  describe("PUT", function() {
+    var data;
+    beforeEach(function() {
+      args = {
+        url: '/my_resource',
+        type: 'PUT'
+      };
     });
 
-    describe("object data", function() {
-      beforeEach(function() {
-        args = {
-          url: '/my_resource',
-          type: 'PATCH',
-          data: {goo:'far'}
-        };
+    it("adds the auth token to request headers", function() {
+      data = transformedArguments(args);
+      expect(Object.keys(data)).toContain('headers');
+      expect(Object.keys(data.headers)).toContain('X-CSRF-Token');
+    });
+  });
 
-        data = JSON.parse(transformedArguments(args).data);
-      });
+  describe("PATCH", function() {
+    var data;
+    beforeEach(function() {
+      args = {
+        url: '/my_resource',
+        type: 'PATCH'
+      };
+    });
 
-      it("maintains existing data", function() {
-        expect(data.goo).toEqual('far');
-      });
-
-      it("adds the auth token", function() {
-        expect(data.authenticity_token).toBe('authToken');
-      });
+    it("adds the auth token to request headers", function() {
+      data = transformedArguments(args);
+      expect(Object.keys(data)).toContain('headers');
+      expect(Object.keys(data.headers)).toContain('X-CSRF-Token');
     });
   });
 });
