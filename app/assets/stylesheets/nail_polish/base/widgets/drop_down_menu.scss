@@ -15,7 +15,7 @@
   .caret {
     width: 23px;
     height: 16px;
-    background: transparent image-url('nail_polish/elements/menu_caret.png') no-repeat;
+    background: transparent asset-url('nail_polish/elements/menu_caret.png') no-repeat;
     position: absolute;
     top: -15px;
     left: $spacing;
