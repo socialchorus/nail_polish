@@ -17,7 +17,7 @@
   }
 
   .close-icon {
-    background: transparent image-url('nail_polish/elements/close_icon.png') no-repeat;
+    background: transparent url('nail_polish/elements/close_icon.png') no-repeat;
     cursor: pointer;
     margin-top: $spacing;
     height: 15px;
@@ -25,7 +25,7 @@
   }
 
   .light-close-icon {
-    background: transparent image-url('nail_polish/elements/white_close_icon.png') no-repeat;
+    background: transparent url('nail_polish/elements/white_close_icon.png') no-repeat;
     margin-top: $spacing;
     width: 15px;
     height: 15px;
