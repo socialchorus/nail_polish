@@ -12,7 +12,3 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-
-group :development, :test do
-  gem "jasmine", "~> 2.4.0"
-end
