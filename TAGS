@@ -1,0 +1,27 @@
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+spec/dummy/app/controllers/application_controller.rb,79
+class ApplicationController < ActionController::BaseApplicationController1,0
+
+spec/dummy/app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
+
+spec/dummy/config/application.rb,147
+module DummyDummy11,0
+  class Application < Rails::ApplicationApplication12,0
+  class Application < Rails::ApplicationDummy::Application12,0
+
+lib/nail_polish/engine.rb,133
+module NailPolishNailPolish1,0
+  class Engine < ::Rails::EngineEngine2,0
+  class Engine < ::Rails::EngineNailPolish::Engine2,0
+
+lib/nail_polish/version.rb,109
+module NailPolishNailPolish1,0
+  VERSION = "0.6.0"VERSION2,0
+  VERSION = "0.6.0"NailPolish::VERSION2,0
+
+lib/nail_polish.rb,33
+module NailPolishNailPolish6,0
