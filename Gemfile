@@ -13,4 +13,4 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'hogan_assets', git: 'https://pivotalhalogen:carve8maid@github.com/socialchorus/hogan_assets/'
+gem 'hogan_assets', git: 'https://pivotalhalogen:carve8maid@github.com/socialchorus/hogan_assets/', tag: 'v1.7.1'
