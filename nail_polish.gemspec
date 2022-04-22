@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 5.2.4.1"
+  s.add_dependency "rails", "~> 6.1.5"
   s.add_dependency 'mustache'
   s.add_dependency 'hogan_assets' # for client side packaging of mustache templates
   s.add_dependency 'compass-rails'
