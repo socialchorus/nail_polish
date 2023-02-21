@@ -1,4 +1,6 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in nail_polish.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -13,4 +15,4 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'hogan_assets', git: 'https://pivotalhalogen:carve8maid@github.com/socialchorus/hogan_assets/', tag: 'v1.7.1'
+gem 'hogan_assets', git: 'https://pivotalhalogen:carve8maid@github.com/socialchorus/hogan_assets/', tag: 'v1.7.2'
